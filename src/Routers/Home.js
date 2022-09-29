@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import HeaderCom from '../Components/header';
+import Template from '../Components/template';
+import { firebaseApp } from '../firebase';
 import { designSystem } from '../globalStyle';
 
 const Visual = styled.div`
@@ -83,14 +85,25 @@ const ItemWrap = styled.div`
 `;
 
 const Item = styled.div`
-    background: #ff4a5b;
-    min-height: 100px;
+  width: 100%;
+  height: 100%;
+`;
+
+const ItemImg = styled.img`
+    width:100%;
+    height: 100%;
+    transition: .5s;
+
+    :hover {
+        opacity: .3;
+    }
 `;
 
 export default function Home() {
+
     return (
-        <div>
-            <HeaderCom />
+        <Template contents={
+            <>
             <Visual>
                 <VisualText>
                     <VisualMainText>
@@ -110,13 +123,30 @@ export default function Home() {
 
             <Container>
                 <ItemWrap>
-                    <Link to='/test'><Item>test</Item></Link>
-                    <Item>test</Item>
-                    <Item>test</Item>
-                    <Item>test</Item>
-                    <Item>test</Item>
+                    <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item></Link>
+                    <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/iamwebapp.png`)} alt='' /></Item></Link>
+                    <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item></Link>
+                    <Link to='/works/iamminiwebapp'>
+                        <Item><ItemImg src={require(`../images/workBanners/ddbdd.png`)} alt='' /></Item>
+                    </Link>
+                    <Link to='/works/iamminiwebapp'>
+                        <Item><ItemImg src={require(`../images/workBanners/cleaner.png`)} alt='' /></Item>
+                    </Link>
+                    <Link to='/works/iamminiwebapp'>
+                        <Item><ItemImg src={require(`../images/workBanners/eventpage.png`)} alt='' /></Item>
+                    </Link>
+                    <Link to='/works/iamminiwebapp'>
+                        <Item><ItemImg src={require(`../images/workBanners/productpage.png`)} alt='' /></Item>
+                    </Link>
+                    <Link to='/works/iamminiwebapp'>
+                        <Item><ItemImg src={require(`../images/workBanners/productpage2.png`)} alt='' /></Item>
+                    </Link>
+                    <Link to='/works/iamminiwebapp'>
+                        <Item><ItemImg src={require(`../images/workBanners/banner.png`)} alt='' /></Item>
+                    </Link>
                 </ItemWrap>
             </Container>
-        </div>
+            </>
+        } />
     )
 };

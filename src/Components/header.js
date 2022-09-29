@@ -29,7 +29,7 @@ export default function HeaderCom() {
             <h1>LOGO</h1>
             <MenuWrap>
                 <Menu><Link to='/'>work</Link></Menu>
-                <Menu><Link to='about'>about</Link></Menu>
+                <Menu><Link to='/about'>about</Link></Menu>
             </MenuWrap>
         </HeaderWrap>
     )

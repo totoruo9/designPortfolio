@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import About from './Routers/About';
 import Home from './Routers/Home';
+import IamWebApp from './Routers/works/Iamwebapp';
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
     {
       path: "about",
       element: <About />,
+    },
+    {
+        path: '/works/:contactId',
+        element: <IamWebApp />
     },
   ]);
   

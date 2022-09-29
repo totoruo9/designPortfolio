@@ -14,5 +14,6 @@ export const lightTheme = {
     fontSize: {
         default: '18px',
         title: '24px'
-    }
+    },
+    maxWidth: '1556px',
 }
