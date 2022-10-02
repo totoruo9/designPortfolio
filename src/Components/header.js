@@ -33,19 +33,28 @@ const Logo = styled.h1`
 `;
 
 const MenuWrap = styled.ul`
-    display: none;
+    display: flex;
     align-items: center;
     padding: 16px;
-
-
-    @media ${device.laptop} {
-        display: flex;
-    }
 `;
 
 const Menu = styled.li`
+    display: none;
     padding-left: 40px;
+
+    @media ${device.laptop} {
+        display: block;
+    }
 `;
+
+const Hamburger = styled.img`
+    display: block;
+
+    @media ${device.laptop} {
+        display: none;
+    }
+`;
+
 
 export default function HeaderCom() {
     return (
@@ -54,6 +63,8 @@ export default function HeaderCom() {
             <MenuWrap>
                 <Menu><Link to='/'>work</Link></Menu>
                 <Menu><Link to='/about'>about</Link></Menu>
+
+                <Hamburger src={require('../images/icons/menu_btn.png')} />
             </MenuWrap>
         </HeaderWrap>
     )

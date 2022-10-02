@@ -165,8 +165,8 @@ export default function WorkTemplate({mainTitle, client, workArea, tools, explan
                 </Header>
             </HeaderWrap>
             
-            <FixedBannerArea bgImg={require(`../images/${bannerImg}.png`)}>
-            <FixedBanner src={require(`../images/${bannerImg}.png`)} />
+            <FixedBannerArea bgImg={require(`../images/${bannerImg}`)}>
+            <FixedBanner src={require(`../images/${bannerImg}`)} />
             </FixedBannerArea>
             {
                 explan

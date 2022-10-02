@@ -126,13 +126,13 @@ export default function Home() {
                     <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item></Link>
                     <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/iamwebapp.png`)} alt='' /></Item></Link>
                     <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item></Link>
-                    <Link to='/works/iamminiwebapp'>
+                    <Link to='/works/ddbdd'>
                         <Item><ItemImg src={require(`../images/workBanners/ddbdd.png`)} alt='' /></Item>
                     </Link>
                     <Link to='/works/iamminiwebapp'>
                         <Item><ItemImg src={require(`../images/workBanners/cleaner.png`)} alt='' /></Item>
                     </Link>
-                    <Link to='/works/iamminiwebapp'>
+                    <Link to='/works/eventpage'>
                         <Item><ItemImg src={require(`../images/workBanners/eventpage.png`)} alt='' /></Item>
                     </Link>
                     <Link to='/works/iamminiwebapp'>

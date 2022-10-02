@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { device } from '../theme';
 
@@ -95,10 +96,26 @@ const Shadow = styled.div`
     opacity: 0.15;
 `;
 
+const TopBtn = styled.img`
+    position: fixed;
+    z-index:1000;
+    right: 24px;
+    bottom: 40px;
+
+    @media ${device.laptop} {
+        right: 80px;
+        bottom: 80px;
+    }
+`;
+
+const goTop = () => {
+    window.scrollTo(0,0);
+}
 
 export default function FooterCom(){
     return (
         <>
+        <TopBtn src={require('../images/icons/top_btn.png')} alt='상단으로 이동하기 버튼' onClick={goTop} />
         <Shadow />
         <Footer>
             <FooterLeft>
