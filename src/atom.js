@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const atomText = atom({
+export const atomHdHeight = atom({
     key: 'textState',
-    default: 'hello world'
+    default: 0
 })

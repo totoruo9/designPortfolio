@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { device } from "./theme";
 
 export const designSystem = {
     color: {
@@ -14,7 +15,13 @@ export const designSystem = {
         sub: '#ff4a5b'
     },
     fontSize: {
+        fs14: '14px',
+        fs16: '16px',
+        fs18: '18px',
+        fs20: '20px',
+        fs24: '24px',
         default: '18px',
+        
         title: '24px'
     }
 }
@@ -75,9 +82,14 @@ export const GlobleStyle = createGlobalStyle`
   }
   body {
       color: ${designSystem.color.gray500};
-      font-size: ${designSystem.fontSize.default};
-      line-height: 32px;
+      font-size: 16px;
+      line-height: 28px;
       font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+
+      @media ${device.laptop} {
+        font-size: ${designSystem.fontSize.default};
+        line-height: 32px;
+    }
   }
 `;
 

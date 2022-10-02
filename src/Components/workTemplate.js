@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { lightTheme } from '../theme';
+import { device, lightTheme } from '../theme';
 import Template from './template';
 
 const HeaderWrap = styled.div`
@@ -9,7 +9,11 @@ const HeaderWrap = styled.div`
     justify-content: center;
     align-items: center;
     background: #fff;
-    padding-bottom: 80px;
+    padding-bottom: 0px;
+
+    @media ${device.laptop} {
+        padding-bottom: 80px;
+    }
 `;
 
 const Header =  styled.div`
@@ -18,28 +22,51 @@ const Header =  styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 80px;
-    line-height: 120px;
+    font-size: 32px;
+    line-height: 48px;
     color: #1c1c1c;
-    margin-top: 200px;
+    margin-top: 72px;
     padding: 24px 16px;
     white-space: pre-line;
+
+    @media ${device.laptop} {
+        font-size: 80px;
+        line-height: 120px;
+        margin-top: 152px;
+    }
 `;
 
 const InfoTool = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding-top: 16px;
+    flex-direction: column;
+    
+    @media ${device.laptop} {
+        padding-top: 16px;
+        flex-direction:row;
+    }
 `;
 
 const InfoWrap = styled.ul`
     display: flex;
+    flex-direction: column;
+
+    @media ${device.laptop} {
+        flex-direction: row;
+    }
 `;
 const Info = styled.li`
     display: flex;
     margin-right: 40px;
-    padding: 24px 16px;
+    padding: 0 16px;
+
+    :last-child {
+        margin-right: 0;
+    }
+
+    @media ${device.laptop} {
+        padding: 24px 16px;
+    }
 `;
 const InfoTitle = styled.p`
     font-weight: 700;
@@ -47,26 +74,59 @@ const InfoTitle = styled.p`
 `;
 const InfoContent = styled.p`
     padding-left:20px;
+
 `;
 
 const ToolIcons = styled.ul`
     display: flex;
-    padding: 24px 16px;
+    padding: 24px 8px;
+
+    @media ${device.laptop} {
+        padding: 24px 16px;
+    }
 `;
 
 const ToolIcon =styled.li`
     margin-left: 8px;
+
+    img {
+        width: 24px;
+    }
+
+    @media ${device.laptop} {
+        img {
+            width: 100%
+        }
+    }
+`;
+
+const FixedBannerArea = styled.div`
+    width: 100%;
+    min-height:350px;
+    padding:0;
+    margin:0;
+    background: url(${props => props.bgImg}) center center;
+    background-size: cover;
+
+    @media ${device.laptop} {
+        min-height: 950px;
+    }
 `;
 
 const FixedBanner = styled.img`
     width: 100%;
+    display:none;
 `;
 
 const Explanation = styled.div`
     width:100%;
     display: flex;
     justify-content: center;
-    padding-top: 80px;
+    padding-top: 0px;
+
+    @media ${device.laptop} {
+        padding-top: 80px
+    }
 `;
 
 const Text = styled.p`
@@ -105,8 +165,9 @@ export default function WorkTemplate({mainTitle, client, workArea, tools, explan
                 </Header>
             </HeaderWrap>
             
+            <FixedBannerArea bgImg={require(`../images/${bannerImg}.png`)}>
             <FixedBanner src={require(`../images/${bannerImg}.png`)} />
-
+            </FixedBannerArea>
             {
                 explan
                     ? (

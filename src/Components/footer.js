@@ -1,34 +1,79 @@
 import React from 'react';
 import styled from 'styled-components';
+import { device } from '../theme';
 
 const Footer = styled.footer`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 40px 24px 24px;
+    padding: 16px;
     background: #fff;
+    flex-direction: column;
+    align-items: center;
+
+    @media ${device.laptop} {
+        padding: 40px 24px 24px;
+        flex-direction: row;
+    }
 `;
 
 const FooterLeft = styled.ul`
     display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    @media ${device.laptop} {
+        width: auto;
+        flex-direction: row;
+        margin-bottom: 0;
+    }
 `;
 const InfoItem = styled.li`
-    padding: 8px 24px;
+    display: block;
+    padding: 4px;
+    :last-child {
+        text-align: right;
+    }
+
+    @media ${device.laptop} {
+        padding: 8px 24px;
+
+        :last-child {
+        text-align: left;
+    }
+    }
 `;
 const InfoTitle = styled.p`
     font-size: 14px;
     line-height: 24px;
 `;
 const Info = styled.p`
-    padding-top:4px;
     font-size: 14px;
     line-height: 24px;
     color: #333;
+
+    @media ${device.laptop} {
+        padding-top: 4px;
+    }
 `;
 
 const FooterRight = styled.div`
     text-align: right;
-    padding: 0 24px;
+    padding: 16px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 1px solid #eaeaea;
+
+    @media ${device.laptop} {
+        padding: 0 24px;
+        display:block;
+        border-top: 0;
+    }
 `;
 const Logo = styled.p`
     font-size: 32px;
