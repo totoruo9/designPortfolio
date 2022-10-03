@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/designPortfolio/static/js/main.f83fd643.js",
+    "main.js": "/designPortfolio/static/js/main.9249c17e.js",
     "static/media/productpage_result.png": "/designPortfolio/static/media/productpage_result.80f45bcb47dc6c847626.png",
     "static/media/snspage_ui.png": "/designPortfolio/static/media/snspage_ui.e7e1ce79877bb5257536.png",
     "static/media/cleaner_package.png": "/designPortfolio/static/media/cleaner_package.e50e02124cd7f8e939c8.png",
@@ -22,10 +22,12 @@
     "static/media/eventpage_tvnUI.png": "/designPortfolio/static/media/eventpage_tvnUI.8897c83603966837c02b.png",
     "static/media/iamwebapp_renewall.png": "/designPortfolio/static/media/iamwebapp_renewall.d7e260c29f2422175d8a.png",
     "static/media/eventpage_dnaMockup.png": "/designPortfolio/static/media/eventpage_dnaMockup.1051895466071e23436c.png",
+    "static/media/background.png": "/designPortfolio/static/media/background.2cbc5e3853b4507fd11d.png",
     "static/media/snspage_persona02.png": "/designPortfolio/static/media/snspage_persona02.5a8870491b078d077ef1.png",
     "static/media/iamwebapp_coding.png": "/designPortfolio/static/media/iamwebapp_coding.7e08f6315e7558d64da1.png",
     "static/media/iamwebapp_designSystem.png": "/designPortfolio/static/media/iamwebapp_designSystem.3f4dd4137f1a7195c5ad.png",
     "static/media/productpage2.png": "/designPortfolio/static/media/productpage2.531cffbcf8ce72a1747f.png",
+    "static/media/banner.png": "/designPortfolio/static/media/banner.c8854b18dc07c17fd2ae.png",
     "static/media/iamwebapp_section02.png": "/designPortfolio/static/media/iamwebapp_section02.0d64320f4921c5b83203.png",
     "static/media/eventpage_tvnMockup.png": "/designPortfolio/static/media/eventpage_tvnMockup.1f963b888ec01abfe782.png",
     "static/media/snscontents.png": "/designPortfolio/static/media/snscontents.d885f8857bcd47b7fb30.png",
@@ -35,7 +37,6 @@
     "static/media/cleaner.png": "/designPortfolio/static/media/cleaner.7bc0b20d803f28326752.png",
     "static/media/iamwebapp.png": "/designPortfolio/static/media/iamwebapp.ea443b282e76d83b3c4a.png",
     "static/media/iamwebapp_target.png": "/designPortfolio/static/media/iamwebapp_target.1c8ffda8d94ce8090a58.png",
-    "static/media/banner.png": "/designPortfolio/static/media/banner.29f951c9cbf372238887.png",
     "static/media/iamwebapp_section01.png": "/designPortfolio/static/media/iamwebapp_section01.b6096c911358b27f9810.png",
     "static/media/nanalil.png": "/designPortfolio/static/media/nanalil.1eea98c54c523342b33f.png",
     "static/media/iamwebapp_jeny1.png": "/designPortfolio/static/media/iamwebapp_jeny1.d6fcdcc25a80e9717430.png",
@@ -46,9 +47,11 @@
     "static/media/iamwebapp_persona2.png": "/designPortfolio/static/media/iamwebapp_persona2.4431b30624a04d6dfd76.png",
     "static/media/snspage_persona.png": "/designPortfolio/static/media/snspage_persona.6861c36042d4c52a3cea.png",
     "static/media/iamwebapp_jeny3.png": "/designPortfolio/static/media/iamwebapp_jeny3.0f973150b921f66555dd.png",
+    "static/media/appvisual.png": "/designPortfolio/static/media/appvisual.69ffb2af3faf09281882.png",
     "static/media/ddbdd.png": "/designPortfolio/static/media/ddbdd.3ea2e49307bad246eda4.png",
     "static/media/snspage_keyword.png": "/designPortfolio/static/media/snspage_keyword.02e26827824649e5cd65.png",
     "static/media/snspage_keymsg.png": "/designPortfolio/static/media/snspage_keymsg.b919ffb269a8091ce507.png",
+    "static/media/text.png": "/designPortfolio/static/media/text.83512535bde939753f46.png",
     "static/media/iamwebapp_step.png": "/designPortfolio/static/media/iamwebapp_step.e3e09e47facc08d7c7af.png",
     "static/media/productpage_process.png": "/designPortfolio/static/media/productpage_process.33877803788dc2e0d228.png",
     "static/media/cleaner_process.png": "/designPortfolio/static/media/cleaner_process.8749911dffa7c618b406.png",
@@ -60,9 +63,9 @@
     "static/media/iamwebapp_graph03.png": "/designPortfolio/static/media/iamwebapp_graph03.0ce3fc72fe38104cc7b6.png",
     "static/media/test.png": "/designPortfolio/static/media/test.c658f01db5f195bf7fdb.png",
     "index.html": "/designPortfolio/index.html",
-    "main.f83fd643.js.map": "/designPortfolio/static/js/main.f83fd643.js.map"
+    "main.9249c17e.js.map": "/designPortfolio/static/js/main.9249c17e.js.map"
   },
   "entrypoints": [
-    "static/js/main.f83fd643.js"
+    "static/js/main.9249c17e.js"
   ]
 }
