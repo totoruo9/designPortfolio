@@ -13,6 +13,7 @@ import Cleaner from './Routers/works/Cleaner';
 import Ddbdd from './Routers/works/Ddbdd';
 import EventPage from './Routers/works/Eventpage';
 import IamWebApp from './Routers/works/Iamwebapp';
+import Nanalil from './Routers/works/Nanalil';
 import Productpage1 from './Routers/works/Productpage1';
 import Productpage2 from './Routers/works/Productpage2';
 import Snspage from './Routers/works/Snspage';
@@ -23,11 +24,11 @@ export const router = createBrowserRouter([
       element: <Home />,
     },
     {
-      path: "about",
+      path: "/about",
       element: <About />,
     },
     {
-        path: '/works/iamminiwebapp',
+        path: 'works/iamminiwebapp',
         element: <IamWebApp />
     },
     {
@@ -57,7 +58,13 @@ export const router = createBrowserRouter([
     {
         path: '/works/snspage',
         element: <Snspage />
+    },
+    {
+        path: '/works/nanalil',
+        element: <Nanalil />
     }
     
-  ]);
+  ], {
+    // basename: '/designPortfolio'
+  });
   

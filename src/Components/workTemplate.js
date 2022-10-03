@@ -12,6 +12,10 @@ const HeaderWrap = styled.div`
     padding-bottom: 0px;
 
     @media ${device.laptop} {
+        padding-bottom: 40px;
+    }
+
+    @media ${device.desktop} {
         padding-bottom: 80px;
     }
 `;
@@ -30,6 +34,13 @@ const Title = styled.h2`
     white-space: pre-line;
 
     @media ${device.laptop} {
+        font-size: 64px;
+        line-height: 88px;
+        margin-top:152px;
+        padding:24px 24px;
+    }
+
+    @media ${device.desktop} {
         font-size: 80px;
         line-height: 120px;
         margin-top: 152px;
@@ -40,11 +51,16 @@ const InfoTool = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    
+
     @media ${device.laptop} {
         padding-top: 16px;
-        flex-direction:row;
+        flex-direction: row;
     }
+    
+    /* @media ${device.desktop} {
+        padding-top: 16px;
+        flex-direction:row;
+    } */
 `;
 
 const InfoWrap = styled.ul`
@@ -52,6 +68,10 @@ const InfoWrap = styled.ul`
     flex-direction: column;
 
     @media ${device.laptop} {
+        flex-direction: row;
+    }
+
+    @media ${device.desktop} {
         flex-direction: row;
     }
 `;
@@ -65,6 +85,10 @@ const Info = styled.li`
     }
 
     @media ${device.laptop} {
+        padding: 24px;
+    }
+
+    @media ${device.desktop} {
         padding: 24px 16px;
     }
 `;
@@ -82,6 +106,10 @@ const ToolIcons = styled.ul`
     padding: 24px 8px;
 
     @media ${device.laptop} {
+        padding: 24px;
+    }
+
+    @media ${device.desktop} {
         padding: 24px 16px;
     }
 `;
@@ -95,7 +123,13 @@ const ToolIcon =styled.li`
 
     @media ${device.laptop} {
         img {
-            width: 100%
+            width: 40px;
+        }
+    }
+
+    @media ${device.desktop} {
+        img {
+            width: 40px;
         }
     }
 `;
@@ -111,6 +145,10 @@ const FixedBannerArea = styled.div`
     @media ${device.laptop} {
         min-height: 950px;
     }
+
+    @media ${device.desktop} {
+        min-height: 950px;
+    }
 `;
 
 const FixedBanner = styled.img`
@@ -122,9 +160,13 @@ const Explanation = styled.div`
     width:100%;
     display: flex;
     justify-content: center;
-    padding-top: 0px;
+    padding-top: 16px;
 
     @media ${device.laptop} {
+        padding-top: 40px;
+    }
+
+    @media ${device.desktop} {
         padding-top: 80px
     }
 `;
@@ -136,6 +178,10 @@ const Text = styled.p`
     white-space: inherit;
 
     @media ${device.laptop} {
+        padding: 24px;
+    }
+
+    @media ${device.desktop} {
         white-space: pre-line;
     }
 `;

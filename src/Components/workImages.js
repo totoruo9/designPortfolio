@@ -45,6 +45,10 @@ const HorizontalScroll = styled.div`
     overflow-x: scroll;
 
     @media ${device.laptop} {
+        padding: 24px;
+    }
+
+    @media ${device.desktop} {
         padding: 40px 80px;
     }
 `;
@@ -56,6 +60,12 @@ const SlideImg = styled.img`
     height: 32px;
 
     @media ${device.laptop} {
+        bottom:20px;
+        right:24px;
+        height:auto;
+    }
+
+    @media ${device.desktop} {
         bottom:20px;
         right:80px;
         height:auto;

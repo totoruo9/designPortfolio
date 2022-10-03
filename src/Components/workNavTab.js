@@ -10,6 +10,10 @@ const NavigationTab = styled.div`
     padding-top: 24px;
 
     @media ${device.laptop} {
+        padding-top: 80px;
+    }
+
+    @media ${device.desktop} {
         padding-top: 120px;
     }
 `;
@@ -20,6 +24,14 @@ const NavWrap = styled.ul`
     display: flex;
     padding: 24px 16px;
     border-bottom: 1px solid #eaeaea;
+
+    @media ${device.laptop} {
+        padding: 24px;
+    }
+
+    @media ${device.desktop} {
+        padding: 24px 16px;
+    }
 `;
 
 const NavItem = styled.li`
@@ -40,6 +52,12 @@ const NavItem = styled.li`
         margin-right: 24px;
         border-radius: 24px;
     }
+
+    @media ${device.desktop} {
+        padding: 8px 32px;
+        margin-right: 24px;
+        border-radius: 24px;
+    }
 `;
 
 const ContentArea = styled.div`
@@ -55,14 +73,26 @@ const SectionArea = styled(ContentArea)`
     flex-direction: column;
 
     @media ${device.laptop} {
-        flex-direction: ${props => props.sectionType !== 'horezontal'
- ? 'column' : 'row'};
+        flex-direction: ${props => props.sectionType !== 'horezontal' ? 'column' : 'row'};
+        margin: 40px auto 0;
+    }
+
+    @media ${device.desktop} {
+        flex-direction: ${props => props.sectionType !== 'horezontal' ? 'column' : 'row'};
         margin: 64px auto 0;
     }
 `;
 
 const SectionTextArea = styled.div`
-    padding: 16px;
+    padding: 0 16px 16px;
+
+    @media ${device.laptop} {
+        padding: 0 24px 16px;
+    }
+
+    @media ${device.desktop} {
+        padding: 0 16px 16px;
+    }
 `;
 
 const SectionNum = styled.p`
@@ -73,6 +103,11 @@ const SectionNum = styled.p`
     color: #333;
 
     @media ${device.laptop} {
+        font-size: 40px;
+        line-height: 56px;
+    }
+
+    @media ${device.desktop} {
         font-size: 40px;
         line-height: 56px;
     }
@@ -89,12 +124,21 @@ const SectionTitle = styled.p`
         font-size: 24px;
         line-height: 40px;
     }
+
+    @media ${device.desktop} {
+        font-size: 24px;
+        line-height: 40px;
+    }
 `;
 
 const SectionInfo = styled.p`
     white-space: inherit;
 
     @media ${device.laptop}{
+        white-space: pre-line;
+    }
+
+    @media ${device.desktop}{
         white-space: pre-line;
     }
 `;
@@ -105,6 +149,10 @@ const SectionImgArea = styled.img`
     padding: 0 16px;
 
     @media ${device.laptop} {
+        width: ${props => props.sectionType !== 'horezontal' ? '100%' : '50%'};
+    }
+
+    @media ${device.desktop} {
         width: ${props => props.sectionType !== 'horezontal' ? '100%' : '50%'};
     }
 `;

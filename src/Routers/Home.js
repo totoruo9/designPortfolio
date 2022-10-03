@@ -1,10 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation} from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { keyframes, ThemeProvider } from 'styled-components';
 import HeaderCom from '../Components/header';
 import Template from '../Components/template';
 import { firebaseApp } from '../firebase';
 import { designSystem } from '../globalStyle';
+import { device } from '../theme';
+
+const flowAnimate = keyframes`
+    from {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(3000px);
+    }
+`;
 
 const Visual = styled.div`
     width: 100%;
@@ -13,39 +23,70 @@ const Visual = styled.div`
     justify-content:center;
     align-items:center;
     position: relative;
+
+    @media ${device.laptop} {
+        height:85vh;
+    }
 `;
 
 const VisualText = styled.div`
     position: absolute;
     width: 100%;
     top:50%;
-    left: 50%;
+    left: 0;
+    right: 0;
     z-index:0;
-    transform: translate(-50%, -50%);
+
+    transition: 0.3s;
+    transform: perspective(0) translateZ(-${props => props.scrollY/700}px) translateY(-50%);
+    opacity: ${props => props.scrollY > 100 ? `0.${props.scrollY+7}` : 1};
+
+    @media ${device.laptop} {}
 `;
 
 const VisualMainText = styled.h2`
-    font-size: 64px;
-    line-height: 120px;
+    font-size: 28px;
+    line-height: 48px;
     text-align: center;
     font-weight: 100;
     letter-spacing: 0.2em;
     color: ${designSystem.color.gray900};
+
+    @media ${device.laptop} {
+        font-size: 56px;
+        line-height: 96px;
+    }
+
+    @media ${device.desktop} {
+        font-size: 64px;
+        line-height: 120px;
+    }
 `;
 
 const VisualSubText = styled.h3`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 100;
-    font-size: 20px;
-    line-height: 40px;
+    font-size: 14px;
+    line-height: 24px;
 
     text-align: center;
     letter-spacing: 0.2em;
 
     color: ${designSystem.color.gray500};
 
-    padding-top:80px;
+    padding-top:24px;
+
+    @media ${device.laptop} {
+        font-size: 16px;
+        padding-top:40px;
+    }
+
+    @media ${device.desktop} {
+        font-size: 20px;
+        line-height: 40px;
+        padding-top: 80px;
+    }
 `;
 
 const St = styled.strong`
@@ -55,6 +96,7 @@ const St = styled.strong`
 
 const BannerWrap = styled.div`
     position: relative;
+    height: 48px;
 `;
 
 const IsMe = styled.div`
@@ -62,26 +104,78 @@ const IsMe = styled.div`
     position: absolute;
     bottom:0;
     text-align: center;
+
+    img {
+        width: 64px;
+    }
+
+    @media ${device.laptop} {
+        img {
+            width: auto;
+        }
+    }
 `;
 
 const Banner = styled.div`
+    animation: ${flowAnimate} 100s linear infinite;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    overflow:hidden;
+    position: fixed;
+    width:100%;
+    bottom:160px;
+    z-index:0;
+
+    img {
+        transition:1s;
+        transform: scale(${props => props.scrollY ? 0.9 : 1});
+        opacity: ${props => props.scrollY ? 0.5 : 1};
+        height: 32px;
+    }
+
+
+    @media ${device.laptop} {
+        bottom:92px;
+
+        img {
+            height: 100%;
+            transform: scale(${props => props.scrollY >100 ? 0.9 : 1});
+            opacity: ${props => props.scrollY >100 ? 0.5 : 1};
+            height: 40px;
+        }
+    }
+
+    @media ${device.desktop} {
+        bottom:160px;
+    }
 `;
 
 const Container = styled.main`
     width: 100%;
     max-width: 1556px;
-    padding: 80px 24px 40px;
-    margin: 0 auto;
+    padding: 40px 16px 80px;
+    margin: 0 auto -80px;
+    position: relative;
+    z-index:0;
+    background: #fff;
+    border-radius: 8px 8px 0 0;
+
+    @media ${device.laptop} {
+        padding: 40px 24px 120px;
+    }
 `;
 
 const ItemWrap = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 16px;
     justify-content: center;
+
+    @media ${device.laptop} {
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
 `;
 
 const Item = styled.div`
@@ -95,17 +189,66 @@ const ItemImg = styled.img`
     transition: .5s;
 
     :hover {
-        opacity: .3;
+        opacity: .72;
+    }
+`;
+
+const Filter = styled.ul`
+    display: flex;
+    gap: 8px;
+    padding: 16px 0 40px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    @media ${device.laptop} {
+        gap: 40px;
+        flex-wrap: nowrap;
+    }
+`;
+
+const FilterItem = styled.li`
+    padding: 4px 24px;
+    border-radius: 28px;
+    color: ${props => props.colorOn ? '#fff' : '#333'};
+    background: ${props => props.colorOn ? '#0000ff' : '#fff'};
+    font-size: 14px;
+
+    @media ${device.laptop} {
+        padding: 8px 24px;
+        border-radius: 28px;
+        font-size: 18px;
     }
 `;
 
 export default function Home() {
+    const [scroll, setScroll] = useState(false);
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
+    const handleScroll = () => {
+        if(window.scrollY >= 50){
+            setScroll(true);
+            setScrollY(Math.round(window.scrollY));
+        } else {
+            setScroll(false);
+            setScrollY(0);
+        }
+    }
 
     return (
         <Template contents={
             <>
             <Visual>
-                <VisualText>
+                <VisualText scrollY={scrollY}>
                     <VisualMainText>
                     사용자의 니즈를 넘어<br />
                     <St>디즈를 탐구하는 디자이너</St><br />
@@ -117,13 +260,20 @@ export default function Home() {
             </Visual>
             
             <BannerWrap>
-                <Banner> <img src={require('../images/banner.png')}/> </Banner>
+                <Banner scrollY={scrollY}> <img src={require('../images/banner.png')}/> <img src={require('../images/banner.png')}/> </Banner>
                 <IsMe><img src={require('../images/test.png')}/></IsMe>
             </BannerWrap>
 
             <Container>
+                <Filter>
+                    <FilterItem colorOn={true}>ALL</FilterItem>
+                    <FilterItem>MAIN-WORK</FilterItem>
+                    <FilterItem>UXUI</FilterItem>
+                    <FilterItem>FRONT-END</FilterItem>
+                    <FilterItem>ETC</FilterItem>
+                </Filter>
                 <ItemWrap>
-                    <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item></Link>
+                    <Link to='/works/nanalil'><Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item></Link>
                     <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/iamwebapp.png`)} alt='' /></Item></Link>
                     <Link to='/works/snspage'><Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item></Link>
                     <Link to='/works/ddbdd'>

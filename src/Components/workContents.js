@@ -4,6 +4,10 @@ import { device, lightTheme } from '../theme';
 
 const ContentWrap = styled.div`
     padding: ${props => props.padding ? props.padding : `120px 0 0`};
+
+    @media ${device.laptop} {
+        padding: ${props => props.padding ? props.padding*.8 : `80px 0 0`};
+    }
 `;
 
 const SubTitle = styled.h4`
@@ -16,6 +20,11 @@ const SubTitle = styled.h4`
 
     @media ${device.laptop} {
         font-size:20px;
+        padding: 16px 24px;
+    }
+
+    @media ${device.desktop} {
+        font-size:20px;
     }
 `;
 const SubText = styled.p`
@@ -26,6 +35,11 @@ const SubText = styled.p`
     white-space: inherit;
 
     @media ${device.laptop}{
+        white-space: pre-line;
+        padding: 0 24px 16px;
+    }
+
+    @media ${device.desktop}{
         white-space: pre-line;
     }
 `;

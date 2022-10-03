@@ -16,6 +16,10 @@ const HeaderWrap = styled.header`
     padding: 24px 16px;
 
     @media ${device.laptop} {
+        padding: 24px;
+    }
+
+    @media ${device.desktop} {
         padding: 24px 40px;
     }
 `;
@@ -25,9 +29,13 @@ const Logo = styled.h1`
 
     img {
             height: 100%;
-        }
+    }
 
     @media ${device.laptop} {
+        height: 40px;
+    }
+
+    @media ${device.desktop} {
         height:40px;
     }
 `;
@@ -35,7 +43,11 @@ const Logo = styled.h1`
 const MenuWrap = styled.ul`
     display: flex;
     align-items: center;
-    padding: 16px;
+    padding: 4px;
+
+    @media ${device.laptop} {
+        padding: 16px;
+    }
 `;
 
 const Menu = styled.li`
@@ -45,12 +57,20 @@ const Menu = styled.li`
     @media ${device.laptop} {
         display: block;
     }
+
+    @media ${device.desktop} {
+        display: block;
+    }
 `;
 
 const Hamburger = styled.img`
     display: block;
 
     @media ${device.laptop} {
+        display: none;
+    }
+
+    @media ${device.desktop} {
         display: none;
     }
 `;
