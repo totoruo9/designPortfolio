@@ -102,9 +102,12 @@ const TopBtn = styled.img`
     right: 24px;
     bottom: 40px;
 
+    width: 40px;
+
     @media ${device.laptop} {
         right: 80px;
         bottom: 80px;
+        width: auto;
     }
 `;
 

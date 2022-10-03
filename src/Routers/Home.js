@@ -64,7 +64,6 @@ const VisualMainText = styled.h2`
 `;
 
 const VisualSubText = styled.h3`
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 100;
     font-size: 14px;
@@ -121,9 +120,7 @@ const Banner = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-    position: fixed;
-    width:100%;
-    bottom:160px;
+    position: relative;
     z-index:0;
 
     img {
@@ -135,18 +132,22 @@ const Banner = styled.div`
 
 
     @media ${device.laptop} {
+        position: fixed;
         bottom:92px;
 
         img {
-            height: 100%;
+            height: 64px;
             transform: scale(${props => props.scrollY >100 ? 0.9 : 1});
             opacity: ${props => props.scrollY >100 ? 0.5 : 1};
-            height: 40px;
         }
     }
 
     @media ${device.desktop} {
         bottom:160px;
+
+        img {
+            height: 80px;
+        }
     }
 `;
 
@@ -223,9 +224,18 @@ const FilterItem = styled.li`
     }
 `;
 
+const workCategory = {
+    all: ['nanalil', 'iamwebapp', 'snspage', 'ddbdd', 'cleaner', 'eventpage', 'productpage', 'productpage2', 'bannerpage'],
+    main: ['nanalil', 'iamwebapp', 'snspage'],
+    uiux: ['nanalil', 'iamwebapp', 'cleaner', 'eventpage'],
+    front: ['iamwebapp', 'eventpage', 'cleaner'],
+    etc: ['snspage', 'ddbdd', 'productpage', 'productpage2', 'bannerpage']
+}
+
 export default function Home() {
-    const [scroll, setScroll] = useState(false);
     const [scrollY, setScrollY] = useState(0);
+    const [filterColor, setFilterColor] = useState('0');
+    const [filterCategory, setFilterCategory] = useState(workCategory.all);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -236,12 +246,16 @@ export default function Home() {
 
     const handleScroll = () => {
         if(window.scrollY >= 50){
-            setScroll(true);
             setScrollY(Math.round(window.scrollY));
         } else {
-            setScroll(false);
             setScrollY(0);
         }
+    }
+
+    const onFilter = (event) => {
+        const filter = event.target.dataset.type;
+        setFilterColor(event.target.dataset.index);
+        setFilterCategory(Object.values(workCategory)[event.target.dataset.index]);
     }
 
     return (
@@ -266,16 +280,30 @@ export default function Home() {
 
             <Container>
                 <Filter>
-                    <FilterItem colorOn={true}>ALL</FilterItem>
-                    <FilterItem>MAIN-WORK</FilterItem>
-                    <FilterItem>UXUI</FilterItem>
-                    <FilterItem>FRONT-END</FilterItem>
-                    <FilterItem>ETC</FilterItem>
+                    <FilterItem onClick={onFilter} data-index='0' data-type='all' colorOn={filterColor==='0'}>ALL</FilterItem>
+                    <FilterItem onClick={onFilter} data-index='1' data-type='main' colorOn={filterColor==='1'}>MAIN-WORK</FilterItem>
+                    <FilterItem onClick={onFilter} data-index='2' data-type='uiux' colorOn={filterColor==='2'}>UXUI</FilterItem>
+                    <FilterItem onClick={onFilter} data-index='3' data-type='front' colorOn={filterColor==='3'}>FRONT-END</FilterItem>
+                    <FilterItem onClick={onFilter} data-index='4' data-type='etc' colorOn={filterColor==='4'}>ETC</FilterItem>
                 </Filter>
                 <ItemWrap>
-                    <Link to='/works/nanalil'><Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item></Link>
-                    <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/iamwebapp.png`)} alt='' /></Item></Link>
-                    <Link to='/works/snspage'><Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item></Link>
+                    {
+                        filterCategory.map((item, index) =>(
+                            <Link key={item+index} to={`/works/${item}`}>
+                                <Item><ItemImg src={require(`../images/workBanners/${item}.png`)} alt='' /></Item>
+                            </Link>
+                        ))
+                    }
+{/* 
+                    <Link to='/works/nanalil'>
+                        <Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item>
+                    </Link>
+                    <Link to='/works/iamminiwebapp'>
+                        <Item><ItemImg src={require(`../images/workBanners/iamwebapp.png`)} alt='' /></Item>
+                    </Link>
+                    <Link to='/works/snspage'>
+                        <Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item>
+                    </Link>
                     <Link to='/works/ddbdd'>
                         <Item><ItemImg src={require(`../images/workBanners/ddbdd.png`)} alt='' /></Item>
                     </Link>
@@ -293,7 +321,7 @@ export default function Home() {
                     </Link>
                     <Link to='/works/bannerpage'>
                         <Item><ItemImg src={require(`../images/workBanners/banner.png`)} alt='' /></Item>
-                    </Link>
+                    </Link> */}
                 </ItemWrap>
             </Container>
             </>

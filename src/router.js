@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       element: <About />,
     },
     {
-        path: 'works/iamminiwebapp',
+        path: 'works/iamwebapp',
         element: <IamWebApp />
     },
     {
@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
         element: <Ddbdd />
     },
     {
-        path: '/works/productpage1',
+        path: '/works/productpage',
         element: <Productpage1 />
     },
     {
@@ -65,6 +65,7 @@ export const router = createBrowserRouter([
     }
     
   ], {
+    // git page 배포시 basename 필요!!!!!!!!! 주석 해제하고 npm run deploy합시다~~
     // basename: '/designPortfolio'
   });
   
