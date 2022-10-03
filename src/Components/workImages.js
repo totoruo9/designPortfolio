@@ -80,13 +80,13 @@ export function ContentImg({type='default', padding, margin, src, alt, children,
             return (
                 minHeight
                     ? (
-                        <FullWidthImg margin={margin} bgImg={require(`../images/${src}`)} minHeight={minHeight}>
+                        <FullWidthImg margin={margin} bgImg={require(`../images/works/${src}`)} minHeight={minHeight}>
                             {children}
                         </FullWidthImg>
                     )
                     : (
                         <FullWidthImg margin={margin}>
-                            <Image src={require(`../images/${src}`)} alt={alt} />
+                            <Image src={require(`../images/works/${src}`)} alt={alt} />
                             {children}
                         </FullWidthImg>
                     )
@@ -98,7 +98,7 @@ export function ContentImg({type='default', padding, margin, src, alt, children,
                         {
                             images.map((item, index) => (
                                 <HorizontalWrap key={index}>
-                                    <HorizontalItem src={require(`../images/${item.src}`)} alt={item.alt} />
+                                    <HorizontalItem src={require(`../images/works/${item.src}`)} alt={item.alt} />
                                 </HorizontalWrap>
                             ))
                         }
@@ -109,7 +109,7 @@ export function ContentImg({type='default', padding, margin, src, alt, children,
         default:
             return (
                 <InnerImgArea padding={padding}>
-                    <Image src={require(`../images/${src}`)} alt={alt}/>
+                    <Image src={require(`../images/works/${src}`)} alt={alt}/>
                 </InnerImgArea>
             )
     }

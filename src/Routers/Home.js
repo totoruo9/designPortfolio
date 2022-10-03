@@ -125,23 +125,23 @@ export default function Home() {
                 <ItemWrap>
                     <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item></Link>
                     <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/iamwebapp.png`)} alt='' /></Item></Link>
-                    <Link to='/works/iamminiwebapp'><Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item></Link>
+                    <Link to='/works/snspage'><Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item></Link>
                     <Link to='/works/ddbdd'>
                         <Item><ItemImg src={require(`../images/workBanners/ddbdd.png`)} alt='' /></Item>
                     </Link>
-                    <Link to='/works/iamminiwebapp'>
+                    <Link to='/works/cleaner'>
                         <Item><ItemImg src={require(`../images/workBanners/cleaner.png`)} alt='' /></Item>
                     </Link>
                     <Link to='/works/eventpage'>
                         <Item><ItemImg src={require(`../images/workBanners/eventpage.png`)} alt='' /></Item>
                     </Link>
-                    <Link to='/works/iamminiwebapp'>
+                    <Link to='/works/productpage1'>
                         <Item><ItemImg src={require(`../images/workBanners/productpage.png`)} alt='' /></Item>
                     </Link>
-                    <Link to='/works/iamminiwebapp'>
+                    <Link to='/works/productpage2'>
                         <Item><ItemImg src={require(`../images/workBanners/productpage2.png`)} alt='' /></Item>
                     </Link>
-                    <Link to='/works/iamminiwebapp'>
+                    <Link to='/works/bannerpage'>
                         <Item><ItemImg src={require(`../images/workBanners/banner.png`)} alt='' /></Item>
                     </Link>
                 </ItemWrap>

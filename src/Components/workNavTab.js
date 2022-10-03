@@ -167,7 +167,7 @@ export default function WorkNavTab ({id, navItem, focusNum, title, text, section
             </SectionTextArea>
             {sectionImg && Array.isArray(sectionImg)
                 ? sectionImg.map((item, index) => (
-                    <SectionImgArea sectionType={type} key={index} src={require(`../images/${item.src}`)} alt={`${item.alt}`} />
+                    <SectionImgArea sectionType={type} key={index} src={require(`../images/works/${item.src}`)} alt={`${item.alt}`} />
                 ))
                 : null
             }

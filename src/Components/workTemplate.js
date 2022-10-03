@@ -133,7 +133,11 @@ const Text = styled.p`
     width: 100%;
     max-width: ${lightTheme.maxWidth};
     padding: 24px 16px;
-    white-space: pre-line;
+    white-space: inherit;
+
+    @media ${device.laptop} {
+        white-space: pre-line;
+    }
 `;
 
 export default function WorkTemplate({mainTitle, client, workArea, tools, explan, contents, bannerImg}){
@@ -165,8 +169,8 @@ export default function WorkTemplate({mainTitle, client, workArea, tools, explan
                 </Header>
             </HeaderWrap>
             
-            <FixedBannerArea bgImg={require(`../images/${bannerImg}`)}>
-            <FixedBanner src={require(`../images/${bannerImg}`)} />
+            <FixedBannerArea bgImg={require(`../images/works/${bannerImg}`)}>
+            <FixedBanner src={require(`../images/works/${bannerImg}`)} />
             </FixedBannerArea>
             {
                 explan

@@ -1,35 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { ContentImg } from '../../Components/workImages';
 import WorkNavTab from '../../Components/workNavTab';
 import WorkTemplate from '../../Components/workTemplate';
-import { device, lightTheme } from '../../theme';
-
-const ContentArea = styled.div`
-    width: 100%;
-    max-width: ${lightTheme.maxWidth};
-    margin: 0 auto;
-`;
-
-const FullWidthImg = styled.div`
-    margin: ${props => props.margin || 0};
-    width: 100%;
-    position: relative;
-
-    min-height: ${props => props.minHeight && props.minHeight[0]};
-    background: url(${props => props.bgImg}) center top;
-    background-size: cover;
-
-    @media ${device.laptop} {
-        min-height: ${props => props.minHeight && props.minHeight[1]};
-    }
-`;
-
-const Image = styled.img`
-    width: 100%;
-    display: block;
-`;
-
 
 export default function EventPage () {
     return (
