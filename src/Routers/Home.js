@@ -110,7 +110,7 @@ const IsMe = styled.div`
 
     @media ${device.laptop} {
         img {
-            width: auto;
+            width: 88px;
         }
     }
 `;
@@ -125,7 +125,6 @@ const Banner = styled.div`
 
     img {
         transition:1s;
-        transform: scale(${props => props.scrollY ? 0.9 : 1});
         opacity: ${props => props.scrollY ? 0.5 : 1};
         height: 32px;
     }
@@ -190,7 +189,8 @@ const ItemImg = styled.img`
     transition: .5s;
 
     :hover {
-        opacity: .72;
+        transform: scale(.98);
+        opacity: .65;
     }
 `;
 
@@ -234,12 +234,24 @@ const workCategory = {
 
 export default function Home() {
     const [scrollY, setScrollY] = useState(0);
+    const [ismeCnt, setIsmeCnt] = useState(2);
     const [filterColor, setFilterColor] = useState('0');
     const [filterCategory, setFilterCategory] = useState(workCategory.all);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+
+        const timeoutId = setInterval(() => {
+            setIsmeCnt(prev =>{
+                if(prev >= 4) {
+                    prev = 1;
+                }
+                return ++prev;
+            })
+        }, 500);
+
         return () => {
+            clearTimeout(timeoutId)
             window.removeEventListener('scroll', handleScroll);
         }
     }, []);
@@ -275,7 +287,9 @@ export default function Home() {
             
             <BannerWrap>
                 <Banner scrollY={scrollY}> <img src={require('../images/banner.png')}/> <img src={require('../images/banner.png')}/> </Banner>
-                <IsMe><img src={require('../images/test.png')}/></IsMe>
+                <IsMe>
+                    <img src={require(`../images/isMe/${ismeCnt}.png`)}/>
+                </IsMe>
             </BannerWrap>
 
             <Container>
@@ -294,34 +308,6 @@ export default function Home() {
                             </Link>
                         ))
                     }
-{/* 
-                    <Link to='/works/nanalil'>
-                        <Item><ItemImg src={require(`../images/workBanners/nanalil.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/iamminiwebapp'>
-                        <Item><ItemImg src={require(`../images/workBanners/iamwebapp.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/snspage'>
-                        <Item><ItemImg src={require(`../images/workBanners/snscontents.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/ddbdd'>
-                        <Item><ItemImg src={require(`../images/workBanners/ddbdd.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/cleaner'>
-                        <Item><ItemImg src={require(`../images/workBanners/cleaner.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/eventpage'>
-                        <Item><ItemImg src={require(`../images/workBanners/eventpage.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/productpage1'>
-                        <Item><ItemImg src={require(`../images/workBanners/productpage.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/productpage2'>
-                        <Item><ItemImg src={require(`../images/workBanners/productpage2.png`)} alt='' /></Item>
-                    </Link>
-                    <Link to='/works/bannerpage'>
-                        <Item><ItemImg src={require(`../images/workBanners/banner.png`)} alt='' /></Item>
-                    </Link> */}
                 </ItemWrap>
             </Container>
             </>

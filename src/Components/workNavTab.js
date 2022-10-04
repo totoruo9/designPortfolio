@@ -99,7 +99,6 @@ const SectionNum = styled.p`
     font-size: 24px;
     line-height: 32px;
     font-weight: 900;
-    font-family: 'Roboto';
     color: #333;
 
     @media ${device.laptop} {
