@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { lightTheme } from 'theme';
-import { collection, getDocs, getFirestore, initializeFirestore, query } from 'firebase/firestore';
+import { collection, getDocs, getFirestore, initializeFirestore, query, addDoc } from 'firebase/firestore/lite';
+import { useForm } from 'react-hook-form';
 
 const InnerContainer = styled.div`
     width: 100%;
@@ -123,29 +124,167 @@ const Text = styled.p`
     padding: 16px;
 `;
 
+const CollaboWrap = styled.form`
+    display: flex;
+    width: 100%;
+    max-width: ${lightTheme.maxWidth};
+    margin: 0 auto;
+    padding: 40px 16px;
+    gap: 20px;
+`;
+const Category = styled.div`
+    width: 100%;
+`;
+const CollaboTitle = styled.div`
+    font-size: 16px;
+    line-height: 24px;
+    padding-bottom: 16px;
+    color: #767676;
+`;
+
+
+const CateItemWrap = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+`;
+const CateItem = styled.p`
+    border: 1px solid #F0F1FA;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: ${props => props.clickOn ? '#fff' : '#aaa'};
+    font-size:14px;
+    line-height: 24px;
+
+    background: ${props => props.clickOn ? '#0000ff' : '#fff'};
+`;
+
+const TextArea = styled.div`
+    width: 100%;
+`;
+
+const InputTextArea = styled.textarea`
+    width:100%;
+    height: 100%;
+    padding: 16px;
+    color: #767676;
+    resize: none;
+    background: #FBFBFF;
+    border: 1px solid #F0F1FA;
+    border-radius: 8px;
+
+    ::placeholder {
+        color: #aaa;
+    }
+`;
+
+const InfoArea = styled.div`
+    width: 100%;
+`;
+const InputWrap = styled.div``;
+
+const Label = styled.div`
+    margin-top: 24px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+`;
+
+const InputStyle = styled.input`
+    width: 100%;
+    background: #FBFBFF;
+    border: 1px solid #F0F1FA;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin-top:8px;
+
+    ::placeholder {
+        color: #aaa;
+    }
+`;
+
+const SubmitBtn = styled.input``;
+
+const categoryType = [
+    '채용',
+    '웹 개발',
+    '웹 디자인',
+    '웹 기획',
+    '모바일 디자인',
+    '모바일 기획',
+    '뉴스레터',
+    '상세페이지 제작',
+    '배너 제작',
+    '사이드프로젝트'
+];
+
+
 
 
 const db = initializeFirestore(firebase,{
     experimentalForceLongPolling: true,
-  });
+});
+
+const test = getFirestore();
 
 export default function About() {
     // db의 users 컬렉션을 가져옴
-    const usersCollectionRef = collection(db, "users");
-    const [users, setUsers] = useState([]);
-    // 시작될때 한번만 실행
-    useEffect(()=>{
-        // 비동기로 데이터 받을준비
-        const getUsers = async () => {
-            // getDocs로 컬렉션안에 데이터 가져오기
-            const data = await getDocs(usersCollectionRef);
-            console.log(data);
+    const contectRef = collection(db, "contect");
+    const [contectCnt, setContectCnt] = useState([]);
+    const {register, handleSubmit, watch, formState: {errors}, reset} = useForm();
+    const [cateFocues, setCateFocuse] = useState([]);
 
-            data.forEach(doc => console.log(doc.data()));
+    const checkCate = (data) => {
+        const text = data.target.innerText;
+        const checker = cateFocues.includes(text);
+
+        if(checker) {
+            const filterText = cateFocues.filter(item => item !== text);
+            setCateFocuse(filterText);
+        } else {
+            setCateFocuse(prev => [...prev, text]);
+        }
+        
+     };
+
+     const onSubmit = async(data) => {
+         const {
+            request,
+            name,
+            number,
+            email} = data;
+
+        try {            
+            const docRef = await addDoc(collection(test, "contect"), {
+                category: cateFocues,
+                name: name,
+                request: request,
+                number: number,
+                email: email,
+                check: false
+            });
+
+            reset();
+        } catch (e) {
+            console.error(e);
+        };
+
+        
+     };
+
+
+    
+    useEffect(()=>{
+        const getContent = async () => {
+            const data = await getDocs(contectRef);
+            setContectCnt(data.docs);
         }
 
-        getUsers();
-    },[])
+        getContent();
+    },[]);
+
+    
 
     return (
         <>
@@ -230,6 +369,52 @@ export default function About() {
                     <Text>
                     온갖 우는 따뜻한 끓는 이성은 있으랴? 천지는 그들은 찬미를 되려니와, 그들에게 할지라도 생생하며, 찾아다녀도, 듣는다. 이것이야말로 얼마나 능히 너의 봄바람이다. 있는 열락의 싹이 능히 봄날의 동력은 이것이다. 피어나는 힘차게 같이, 인생의 크고 뭇 찾아 위하여서. 가치를 끓는 가장 보이는 말이다. 영원히 이상이 열락의 뿐이다. 거친 실로 인도하겠다는 것이다.보라, 이것을 못할 청춘의 그것은 이상은 보라. 인간의 두기 돋고, 인생을 품었기 옷을 청춘에서만 사막이다. 많이 용감하고 용기가 아름다우냐?
                     </Text>
+
+                    <Title style={{marginTop: '80px'}}>Collaboration or Inquiries</Title>
+                    <CollaboWrap onSubmit={handleSubmit(onSubmit)}>
+                        <Category>
+                            <CollaboTitle>카테고리</CollaboTitle>
+                            <CateItemWrap>
+                                {
+                                    categoryType.map((item, index) => (
+                                        <CateItem key={index} clickOn={cateFocues.includes(item)} onClick={checkCate}>{item}</CateItem>
+                                    ))
+                                }
+                            </CateItemWrap>
+                        </Category>
+                        <TextArea>
+                            <CollaboTitle>문의 및 프로젝트 내용</CollaboTitle>
+                            <InputTextArea placeholder='문의 및 프로젝트 상세 내용을 기술해주세요.' {...register('request', {required: true})} />
+                        </TextArea>
+                        <InfoArea>
+                            <InputWrap>
+                                <Label>이름</Label>
+                                <InputStyle type='text' placeholder='문의주신분의 성함을 알려주세요.' {...register('name', {required: true})} />
+
+                                <Label>연락처</Label>
+                                <InputStyle type='text' placeholder='연락드릴 연락처를 알려주세요.' {...register('number', {required: true})} />
+
+                                <Label>이메일</Label>
+                                <InputStyle type='email' placeholder='연락드릴 이메일을 알려주세요.' {...register('email', {required: true})} />
+                            </InputWrap>
+
+                            <SubmitBtn type="submit" value='전송하기' />
+                        </InfoArea>
+                    </CollaboWrap>
+                </Container>
+
+                <Container style={{margin: '64px auto 0'}}>
+                    {
+                        contectCnt.map((item, index) => {
+                            const {name, email, number, category, request} = item.data();
+                            return(
+                                <div key={index+email}>
+                                    <p>{email}</p>
+                                    <p>{name}</p>
+                                </div>
+                            )
+                        })
+                    }
                 </Container>
                 </>
             } />
