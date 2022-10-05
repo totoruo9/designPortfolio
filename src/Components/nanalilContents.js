@@ -95,12 +95,12 @@ const SectionName = styled.p`
     margin-bottom: 16px;
 `;
 
-export function Content ({bgUrl, title, text, src, sectionName, titleAlign}) {
+export function Content ({bgUrl, title, text, src, sectionName, titleAlign, textAreaBgUrl, bgColor}) {
     return (
         <>
-            <Section bgUrl={require(`../images/works/nanalil/${bgUrl}`)}>
+            <Section bgColor={bgColor} bgUrl={require(`../images/works/nanalil/${bgUrl}`)}>
                 <Article>
-                    <TextArea align={titleAlign}>
+                    <TextArea align={titleAlign} bgUrl={require(`../images/works/nanalil/${textAreaBgUrl}`)}>
                         {sectionName && <SectionName>{sectionName}</SectionName>}
                         <Title color={title.color}>
                             {title.top}

@@ -485,6 +485,88 @@ const DiaryVideo = styled.div`
     }
 `;
 
+const cloudFlow = keyframes`
+    from {
+        left: 0;
+    } to {
+        left:-10%;
+    }
+`;
+
+const cloudFlow2 = keyframes`
+    from {
+        left:-10%;
+    } to {
+        left: 0;
+    }
+`;
+
+const weatherAnimate = keyframes`
+    from {
+        transform: translateY(0);
+    } to {
+        transform: translateY(10%);
+    }
+`;
+
+const AnimateHeader = styled.div`
+    background: #44bbff;
+    position: relative;
+`;
+
+const HeaderBack = styled.div`
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height:100%;
+    top:0;
+`;
+
+const CloudImage = styled.img`
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    animation: ${props => props.animateType === 'right' ? cloudFlow : cloudFlow2} 10s linear infinite;
+    animation-direction: alternate;
+`;
+
+const MoonImage = styled.img`
+    display: block;
+    position: absolute;
+    right:64px;
+    bottom: 40px;
+    animation: ${weatherAnimate} 5s linear infinite;
+    animation-direction: alternate;
+`;
+
+const SunnyImage = styled.img`
+    position: absolute;
+    display: block;
+    text-align: right;
+    left: 64px;
+    bottom: -160px;
+    animation: ${weatherAnimate} 5s linear infinite;
+    animation-direction: alternate-reverse;
+`;
+
+const HeaderTextArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 150px 0;
+    position: relative;
+    z-index: 10;
+
+    h4 {
+        color: #fff;
+
+        strong {
+            color: #fff;
+        }
+    }
+`;
+
 
 export default function Nanalil () {
     return (
@@ -514,10 +596,24 @@ export default function Nanalil () {
                         </Section>
 
                         <Section>
-                            <Header bgUrl={require('../../images/works/nanalil/why/header.png')}>
+                            {/* <Header bgUrl={require('../../images/works/nanalil/why/header.png')}>
                                 <SectionName>Background</SectionName>
                                 <Title>왜 만들게 됐어?<strong>나날일 제작 배경</strong></Title>
-                            </Header>
+                            </Header> */}
+
+                            <AnimateHeader>
+                                <HeaderBack>
+                                    <CloudImage animateType={'right'} src={require(`../../images/works/nanalil/why/cloud2.png`)} />
+                                    <MoonImage src={require(`../../images/works/nanalil/why/moon.png`)} />
+                                    <CloudImage animateType={'left'} src={require(`../../images/works/nanalil/why/cloud1.png`)} />
+                                    <SunnyImage src={require(`../../images/works/nanalil/why/sunny.png`)} />
+                                </HeaderBack>
+
+                                <HeaderTextArea>
+                                    <SectionName>Background</SectionName>
+                                    <Title>왜 만들게 됐어?<strong>나날일 제작 배경</strong></Title>
+                                </HeaderTextArea>
+                            </AnimateHeader>
                             <Article style={{background:'#A8DFFF', maxWidth: '100%'}}>
                                 <WhyArea>
                                     <TextArea>
