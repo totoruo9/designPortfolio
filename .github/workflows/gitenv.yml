@@ -22,8 +22,13 @@ jobs:
       # Github Repository Secrets를 통해 환경 변수 파일을 생성합니다.
       - name: Generate Environment Variables File for Production
         run: |
-          echo "REACT_APP_DOMAIN=$REACT_APP_DOMAIN" >> .env.production
-          echo "REACT_APP_DEBUG=$REACT_APP_DEBUG" >> .env.production
+          echo "REACT_APP_FIREBASE_APIKEY=$REACT_APP_FIREBASE_APIKEY" >> /env.production
+          echo "REACT_APP_FIREBASE_AUTHDOMAIN=$REACT_APP_FIREBASE_AUTHDOMAIN" >> /env.production
+          echo "REACT_APP_FIREBASE_PROJECTID=$REACT_APP_FIREBASE_PROJECTID" >> /env.production
+          echo "REACT_APP_FIREBASE_STORAGEBUCKET=$REACT_APP_FIREBASE_STORAGEBUCKET" >> /env.production
+          echo "REACT_APP_FIREBASE_MESSAGEINGSENDERID=$REACT_APP_FIREBASE_MESSAGEINGSENDERID" >> /env.production
+          echo "REACT_APP_FIREBASE_APPID=$REACT_APP_FIREBASE_APPID" >> /env.production
+          echo "REACT_APP_FIREBASE_MEASUREMENTID=$REACT_APP_FIREBASE_MEASUREMENTID" >> /env.production
         env:
           REACT_APP_DOMAIN: ${{ secrets.REACT_APP_DOMAIN }}
           REACT_APP_DEBUG: ${{ secrets.REACT_APP_DEBUG }}
