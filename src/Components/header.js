@@ -14,6 +14,7 @@ const HeaderWrap = styled.header`
     top: 0;
     z-index:1000;
     padding: 24px 16px;
+    transition: 300ms;
 
     @media ${device.laptop} {
         padding: 24px;
@@ -75,11 +76,23 @@ const Hamburger = styled.img`
     }
 `;
 
+const onClick = (item) => {
+    let randomNum = `${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)}`;
+    console.log(randomNum);
+
+    
+    item.target.style.background = `rgba(${randomNum},.5)`;
+    
+    setTimeout(() => {
+        item.target.style.background = `rgba(${randomNum},.0)`;
+    }, 200);
+    
+}
 
 export default function HeaderCom() {
     return (
-        <HeaderWrap>
-            <Logo><Link to='/'><img src={require('../images/logo01.png')} alt='logo' /></Link></Logo>
+        <HeaderWrap onClick={onClick}>
+            <Logo><Link to='/'><img src={require('../images/logo02.png')} alt='logo' /></Link></Logo>
             <MenuWrap>
                 <Menu><Link to='/'>work</Link></Menu>
                 <Menu><Link to='/about'>about</Link></Menu>

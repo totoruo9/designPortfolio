@@ -567,10 +567,35 @@ const HeaderTextArea = styled.div`
     }
 `;
 
+const WarningArea = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    background: rgba(0,0,0,.65);
+    z-index:50;
+
+    @media ${device.desktop} {
+        display: none;
+    }
+`;
+const WarningImg = styled.div`
+`;
+
+const BackBtn = styled.button``;
+
 
 export default function Nanalil () {
     return (
         <>
+            <WarningArea>
+                <WarningImg>!!!</WarningImg>
+                <p>해당 포트폴리오는 권장 1920, 최소 1556 크기에서 볼 수 있습니다.</p>
+                <BackBtn>돌아가기</BackBtn>
+            </WarningArea>
             <WorkTemplate
                 mainTitle={`나의 날씨 일기\n무드 트레커형 다이어리 앱`}
                 client={'개인작업'}

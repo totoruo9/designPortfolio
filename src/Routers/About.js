@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { lightTheme } from 'theme';
-import { collection, getDocs, getFirestore, initializeFirestore, query, addDoc } from 'firebase/firestore/lite';
+import { Timestamp, collection, getDocs, getFirestore, initializeFirestore, query, addDoc, orderBy } from 'firebase/firestore/lite';
 import { useForm } from 'react-hook-form';
+import dayjs from 'dayjs';
 
 const InnerContainer = styled.div`
     width: 100%;
@@ -61,7 +62,7 @@ const LinkWrap = styled.div`
     
 `;
 
-const Linked = styled(Link)`
+const Linked = styled.a`
     display: flex;
     align-items: center;
     width: 200px;
@@ -90,6 +91,7 @@ const flowAnimate = keyframes`
 
 const BannerWrap = styled.div`
     position: relative;
+    overflow: hidden;
     z-index:-1;
     margin-top: -80px;
 `;
@@ -165,7 +167,7 @@ const TextArea = styled.div`
 
 const InputTextArea = styled.textarea`
     width:100%;
-    height: 100%;
+    height: calc(100% - 40px);
     padding: 16px;
     color: #767676;
     resize: none;
@@ -180,11 +182,15 @@ const InputTextArea = styled.textarea`
 
 const InfoArea = styled.div`
     width: 100%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
 `;
 const InputWrap = styled.div``;
 
 const Label = styled.div`
     margin-top: 24px;
+    font-size:16px;
 
     &:first-child {
         margin-top: 0;
@@ -196,7 +202,7 @@ const InputStyle = styled.input`
     background: #FBFBFF;
     border: 1px solid #F0F1FA;
     border-radius: 8px;
-    padding: 8px 16px;
+    padding: 16px;
     margin-top:8px;
 
     ::placeholder {
@@ -204,7 +210,96 @@ const InputStyle = styled.input`
     }
 `;
 
-const SubmitBtn = styled.input``;
+const SubmitBtn = styled.input`
+    width: 100%;
+    background: #333;
+    color: #fff;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height:40px;
+    margin-top: 64px;
+`;
+
+const BoardWrap = styled.div`
+    padding: 40px 0 80px;
+    width: 100%;
+    background: #FBFBFF;
+    margin-bottom: -40px;
+`;
+
+const BoardStateWrap = styled(InnerContainer)`
+    display: flex;
+    padding:16px;
+    gap: 20px;
+`;
+
+const BoardState = styled.div`
+    display: flex;
+    gap:8px;
+    align-items: center;
+    justify-content: center;
+`;
+
+const ColorBox = styled.div`
+    background: ${props => props.state === 2 ? '#2C8DE7' : props.state === 1 ? "#FFB800" : '#ff0000'};
+    width: 12px;
+    height:12px;
+    border-radius: 50%;
+    margin: 6px;
+`;
+
+
+const StateText = styled.p`
+    font-size:14px;
+    line-height: 24px;
+`;
+
+const BoardItemWrap = styled(InnerContainer)`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    justify-content: center;
+`;
+
+const BoardItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 16px;
+    background: #fff;
+`;
+
+const BILeft = styled.div`
+
+`;
+
+const BoardName = styled.div``;
+const BoardEmail = styled.div`
+    color: #aaa;
+    font-size: 14px;
+    line-height:20px;
+    margin-top:4px;
+`;
+
+const BIRight = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+`;
+
+const BIRDate = styled.div`
+    color: #aaa;
+    font-size:14px;
+    line-height:20px;
+    margin-top:4px;
+`;
+
+
 
 const categoryType = [
     '채용',
@@ -229,11 +324,11 @@ const db = initializeFirestore(firebase,{
 const test = getFirestore();
 
 export default function About() {
-    // db의 users 컬렉션을 가져옴
     const contectRef = collection(db, "contect");
     const [contectCnt, setContectCnt] = useState([]);
     const {register, handleSubmit, watch, formState: {errors}, reset} = useForm();
     const [cateFocues, setCateFocuse] = useState([]);
+    const [fakeDb, setFakeDb] = useState([]);
 
     const checkCate = (data) => {
         const text = data.target.innerText;
@@ -255,6 +350,8 @@ export default function About() {
             number,
             email} = data;
 
+        const date = await dayjs(Timestamp.now().toDate()).format('YY-MM-DD HH:mm:ss');
+
         try {            
             const docRef = await addDoc(collection(test, "contect"), {
                 category: cateFocues,
@@ -262,8 +359,19 @@ export default function About() {
                 request: request,
                 number: number,
                 email: email,
-                check: false
+                check: 0,
+                timestamp: date
             });
+
+            setFakeDb(prev => [...prev, {
+                category: cateFocues,
+                name: name,
+                request: request,
+                number: number,
+                email: email,
+                check: 0,
+                timestamp: date
+            }])
 
             reset();
         } catch (e) {
@@ -277,14 +385,20 @@ export default function About() {
     
     useEffect(()=>{
         const getContent = async () => {
-            const data = await getDocs(contectRef);
+            const q = query(contectRef, orderBy("timestamp", 'desc'));
+            const data = await getDocs(q);
             setContectCnt(data.docs);
         }
 
-        getContent();
-    },[]);
+        
+        
+        
 
-    
+        getContent();
+
+
+        
+    },[]);
 
     return (
         <>
@@ -328,10 +442,10 @@ export default function About() {
                             </CareerMapWrap>
                             <div></div>
                             <LinkWrap>
-                                <Linked to='https://github.com/totoruo9'><LinkName>Git hub</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked to='https://blog.naver.com/dnfl_cmc'><LinkName>DNFL Blog</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked to='https://ddbdd.stibee.com/'><LinkName>뜨브뜨 Newsletter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked to='https://www.instagram.com/wegle.letter/'><LinkName>wegle.letter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://github.com/totoruo9'><LinkName>Git hub</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://blog.naver.com/dnfl_cmc'><LinkName>DNFL Blog</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://ddbdd.stibee.com/'><LinkName>뜨브뜨 Newsletter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://www.instagram.com/wegle.letter/'><LinkName>wegle.letter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
                             </LinkWrap>
                         </Info>
                     </ProfileWrap>
@@ -403,19 +517,60 @@ export default function About() {
                     </CollaboWrap>
                 </Container>
 
-                <Container style={{margin: '64px auto 0'}}>
+                <BoardWrap styled={{marginTop: '64px'}}>
+                    <BoardStateWrap>
+                        <BoardState>
+                            <ColorBox state={0} />
+                            <StateText>확인 전</StateText>
+                        </BoardState>
+
+                        <BoardState>
+                            <ColorBox state={1} />
+                            <StateText>확인 중</StateText>
+                        </BoardState>
+
+                        <BoardState>
+                            <ColorBox state={2} />
+                            <StateText>답변 완료</StateText>
+                        </BoardState>
+                    </BoardStateWrap>
+                    <BoardItemWrap>
                     {
-                        contectCnt.map((item, index) => {
-                            const {name, email, number, category, request} = item.data();
+                        fakeDb.map((item, index) => {
+                            const {name, email, number, category, request, timestamp, check} = item;
                             return(
-                                <div key={index+email}>
-                                    <p>{email}</p>
-                                    <p>{name}</p>
-                                </div>
+                                <BoardItem>
+                                    <BILeft>
+                                        <BoardName>{name.slice(0,-2)+'**'}</BoardName>
+                                        <BoardEmail>{email.replace(/(?!\w\w\w\w\w\w)([0-9a-zA-Z]+)@/g, '*****@')}</BoardEmail>
+                                    </BILeft>
+                                    <BIRight>
+                                        <ColorBox state={check} />
+                                        <BIRDate>{timestamp.replace(/\s[0-9:]+/,'')}</BIRDate>
+                                    </BIRight>
+                                </BoardItem>
                             )
                         })
                     }
-                </Container>
+                    {
+                        contectCnt.map((item, index) => {
+                            const {name, email, number, category, request, timestamp, check} = item.data();
+                            return(
+                                <BoardItem>
+                                    <BILeft>
+                                        <BoardName>{name.slice(0,-2)+'**'}</BoardName>
+                                        <BoardEmail>{email.replace(/(?!\w\w\w\w\w\w)([0-9a-zA-Z]+)@/g, '*****@')}</BoardEmail>
+                                    </BILeft>
+                                    <BIRight>
+                                        <ColorBox state={check} />
+                                        <BIRDate>{timestamp.replace(/\s[0-9:]+/,'')}</BIRDate>
+                                    </BIRight>
+                                </BoardItem>
+                            )
+                        })
+                    }
+                    </BoardItemWrap>
+                </BoardWrap>
                 </>
             } />
         </>
