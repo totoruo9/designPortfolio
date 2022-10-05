@@ -3,7 +3,6 @@ import { Link, useLocation} from 'react-router-dom';
 import styled, { keyframes, ThemeProvider } from 'styled-components';
 import HeaderCom from '../Components/header';
 import Template from '../Components/template';
-import { firebaseApp } from '../firebase';
 import { designSystem } from '../globalStyle';
 import { device } from '../theme';
 

@@ -1,9 +1,10 @@
 import Template from 'Components/template';
-import React from 'react';
+import firebase from '../Firebase';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { lightTheme } from 'theme';
-import HeaderCom from '../Components/header';
+import { collection, getDocs, getFirestore, initializeFirestore, query } from 'firebase/firestore';
 
 const InnerContainer = styled.div`
     width: 100%;
@@ -123,7 +124,29 @@ const Text = styled.p`
 `;
 
 
+
+const db = initializeFirestore(firebase,{
+    experimentalForceLongPolling: true,
+  });
+
 export default function About() {
+    // db의 users 컬렉션을 가져옴
+    const usersCollectionRef = collection(db, "users");
+    const [users, setUsers] = useState([]);
+    // 시작될때 한번만 실행
+    useEffect(()=>{
+        // 비동기로 데이터 받을준비
+        const getUsers = async () => {
+            // getDocs로 컬렉션안에 데이터 가져오기
+            const data = await getDocs(usersCollectionRef);
+            console.log(data);
+
+            data.forEach(doc => console.log(doc.data()));
+        }
+
+        getUsers();
+    },[])
+
     return (
         <>
             <Template contents={
@@ -166,10 +189,10 @@ export default function About() {
                             </CareerMapWrap>
                             <div></div>
                             <LinkWrap>
-                                <Linked to=''><LinkName>Git hub</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked to=''><LinkName>DNFL Blog</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked to=''><LinkName>뜨브뜨 Newsletter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked to=''><LinkName>wegle.letter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked to='https://github.com/totoruo9'><LinkName>Git hub</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked to='https://blog.naver.com/dnfl_cmc'><LinkName>DNFL Blog</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked to='https://ddbdd.stibee.com/'><LinkName>뜨브뜨 Newsletter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked to='https://www.instagram.com/wegle.letter/'><LinkName>wegle.letter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
                             </LinkWrap>
                         </Info>
                     </ProfileWrap>
