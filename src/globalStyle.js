@@ -94,19 +94,19 @@ export const GlobleStyle = createGlobalStyle`
 
   @font-face {
       font-family: 'gmarketB';
-      src: url(${require('./fonts/GmarketSansOTF/GmarketSansBold.otf')});
+      src: url(${require('./assets/fonts/GmarketSansOTF/GmarketSansBold.otf')});
       font-weight: 700;
   }
 
   @font-face {
       font-family: 'gmarketL';
-      src: url(${require('./fonts/GmarketSansOTF/GmarketSansLight.otf')});
+      src: url(${require('./assets/fonts/GmarketSansOTF/GmarketSansLight.otf')});
       font-weight: 100;
   }
 
   @font-face {
       font-family: 'gmarketM';
-      src: url(${require('./fonts/GmarketSansOTF/GmarketSansMedium.otf')});
+      src: url(${require('./assets/fonts/GmarketSansOTF/GmarketSansMedium.otf')});
       font-weight: 500;
   }
 `;

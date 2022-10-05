@@ -434,6 +434,56 @@ const PersonaWrap = styled.div`
     }
 `;
 
+const OnboardingWrap = styled.div`
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+    width: 100%;
+    max-width: ${lightTheme.maxWidth};
+    margin: 0 auto;
+
+    img { 
+        width: auto;
+    }
+`;
+
+const VideoArea = styled.div`
+    position: relative;
+    width: 380px;
+    height: 800px;
+
+    img {
+        position: absolute;
+        top:0;
+        width: 100%;
+    }
+`;
+
+const VideoWrap = styled.div`
+    position: absolute;
+    top:0;
+    width: 100%;
+    
+    padding: 16px 13px 24px 13px;
+
+    video {
+        width: 100%;
+        border-radius: 40px;
+    }
+`;
+
+const DiaryVideo = styled.div`
+    position: relative;
+    width: 100%;
+    max-width: ${lightTheme.maxWidth};
+    margin: 160px auto 0;
+    padding: 0 40px;
+
+    video {
+        width: 424px;
+        border-radius: 52px;
+    }
+`;
 
 
 export default function Nanalil () {
@@ -726,6 +776,57 @@ export default function Nanalil () {
                         </ResearchArea>
 
                         <Image margin={'-130px auto 0'} src={require('../../images/works/nanalil/develop/designsystem.png')} />
+
+                        <Image margin={'300px auto'} src={require('../../images/works/nanalil/ui/coachmark.png')} />
+
+                        <OnboardingWrap>
+                            <VideoArea>
+                                <Image src={require('../../images/works/nanalil/ui/onbarding_videoFrame.png')} />
+                                <VideoWrap>
+                                    <video autoPlay={true} loop={true} muted>
+                                        <source src={require('../../assets/videos/onboarding.mp4')} type='video/mp4' />
+                                    </video>
+                                </VideoWrap>
+                            </VideoArea>
+
+                            <Image src={require('../../images/works/nanalil/ui/onboarding.png')} />
+                        </OnboardingWrap>
+
+                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/mainpage.png')} />
+
+                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/diary.png')} />
+
+                        <DiaryVideo>
+                            <Image src={require('../../images/works/nanalil/ui/question_video.png')} />
+                            <VideoWrap>
+                                <video autoPlay={true} loop={true} muted>
+                                    <source src={require('../../assets/videos/question.mp4')} type='video/mp4' />
+                                </video>
+                            </VideoWrap>
+                        </DiaryVideo>
+
+                        <DiaryVideo>
+                            <Image src={require('../../images/works/nanalil/ui/picture_video.png')} />
+                            <VideoWrap style={{textAlign: 'right', right:'40px'}}>
+                                <video autoPlay={true} loop={true} muted>
+                                    <source src={require('../../assets/videos/picture.mp4')} type='video/mp4' />
+                                </video>
+                            </VideoWrap>
+                        </DiaryVideo>
+
+                        <DiaryVideo>
+                            <Image src={require('../../images/works/nanalil/ui/recoard_video.png')} />
+                            <VideoWrap>
+                                <video autoPlay={true} loop={true} muted>
+                                    <source src={require('../../assets/videos/record.mp4')} type='video/mp4' />
+                                </video>
+                            </VideoWrap>
+                        </DiaryVideo>
+
+                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/goal.png')} />
+                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/schedule.png')} />
+                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/setting.png')} />
+                        <Image margin={'0 auto -40px'} src={require('../../images/works/nanalil/ui/footer.png')} />
                 </>
                 }
             />
