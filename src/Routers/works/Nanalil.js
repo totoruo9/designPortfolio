@@ -568,7 +568,7 @@ const WarningArea = styled.div`
     position: fixed;
     width: 100%;
     height: 100%;
-    display: none;
+    display: block;
     flex-direction: column;
     align-items:center;
     justify-content: center;
@@ -578,7 +578,7 @@ const WarningArea = styled.div`
     @media ${device.desktop} {
         display: none;
     }
-`;
+`;s
 const WarningImg = styled.img`
 `;
 
