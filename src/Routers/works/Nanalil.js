@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import WorkTemplate from '../../Components/workTemplate';
@@ -568,7 +568,7 @@ const WarningArea = styled.div`
     position: fixed;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items:center;
     justify-content: center;
@@ -598,15 +598,116 @@ const BackBtn = styled(Link)`
     margin-top: 64px;
 `;
 
+const TabNav = styled.div`
+    display: flex;
+    gap: 40px;
+    background: #F8F9FF;
+    padding: 16px 40px;
+    border-radius:48px;
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    z-index:200;
+    box-shadow: 0px 4px 16px rgba(79, 105, 198, 0.15);
+`;
+
+const SectionBtn = styled.a`
+    background: ${props => props.navOn && '#fff'};
+    padding: ${props => props.navOn && '8px 16px'};
+    border-radius: ${props => props.navOn && '24px'};
+    img {
+        display: block;
+    }
+    display: flex;
+    gap: 8px;
+    align-items: center;
+`;
+
+const SectionBtnText = styled.p`
+    display: ${props => props.navOn ? 'block' : 'none'};
+`;
 
 export default function Nanalil () {
+    const [scrollY, setScrollY] = useState(0);
+    const [navOn, setNavOn] = useState(1);
+    const storyRef = useRef();
+    const descoverRef = useRef();
+    const defineRef = useRef();
+    const developRef = useRef();
+    const deliverRef = useRef();
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [scrollY, navOn]);
+
+    const handleScroll = () => {
+        if(window.scrollY >= 50){
+            setScrollY(Math.round(window.scrollY));
+            const storyRefTop = storyRef.current.offsetTop;
+            const descoverRefTop = descoverRef.current.offsetTop;
+            const defineRefTop = defineRef.current.offsetTop;
+            const developRefTop = developRef.current.offsetTop;
+            const deliverRefTop = deliverRef.current.offsetTop;
+            
+            if(storyRefTop >= scrollY) {
+                setNavOn(1);
+            } else if(storyRefTop <= scrollY && scrollY <= descoverRefTop)  {
+                setNavOn(1);
+            } else if(descoverRefTop <= scrollY && scrollY <= defineRefTop) {
+                setNavOn(2);
+            } else if(defineRefTop <= scrollY && scrollY <= developRefTop) {
+                setNavOn(3);
+            } else if(developRefTop <= scrollY && scrollY <= deliverRefTop) {
+                setNavOn(4);
+            } else if(deliverRefTop <= scrollY) {
+                setNavOn(5);
+            }
+        } else {
+            setScrollY(0);
+        }
+    };
+
+    const secBtnClick = (event) =>{
+        const storyRefTop = storyRef.current.offsetTop;
+        const descoverRefTop = descoverRef.current.offsetTop;
+        const defineRefTop = defineRef.current.offsetTop;
+        const developRefTop = developRef.current.offsetTop;
+        const deliverRefTop = deliverRef.current.offsetTop;
+
+        if(event.target.dataset.num === '1') {
+            window.scrollTo({top: storyRefTop, behavior: "smooth"});
+        } else if(event.target.dataset.num === '2') {
+            window.scrollTo({top: descoverRefTop+100, behavior: "smooth"});
+        } else if(event.target.dataset.num === '3') {
+            window.scrollTo({top: defineRefTop+100, behavior: "smooth"});
+        } else if(event.target.dataset.num === '4') {
+            window.scrollTo({top: developRefTop+100, behavior: "smooth"});
+        } else if(event.target.dataset.num === '5') {
+            window.scrollTo({top: deliverRefTop+100, behavior: "smooth"});
+        }
+    };
     return (
         <>
-            <WarningArea>
+            <TabNav>
+                <SectionBtn onClick={secBtnClick} navOn={navOn===1}><img data-num='1' src={require('../../assets/images/icons/nanalil_nav/01.png')} /> <SectionBtnText style={{color:'#45528B'}} navOn={navOn===1}>배경</SectionBtnText></SectionBtn>
+                <SectionBtn onClick={secBtnClick} navOn={navOn===2}><img data-num='2' src={require('../../assets/images/icons/nanalil_nav/02.png')} /> <SectionBtnText style={{color:'#FCE671'}} navOn={navOn===2}>조사</SectionBtnText></SectionBtn>
+                <SectionBtn onClick={secBtnClick} navOn={navOn===3}><img data-num='3' src={require('../../assets/images/icons/nanalil_nav/03.png')} /> <SectionBtnText style={{color:'#A1D88E'}} navOn={navOn===3}>정의</SectionBtnText></SectionBtn>
+                <SectionBtn onClick={secBtnClick} navOn={navOn===4}><img data-num='4' src={require('../../assets/images/icons/nanalil_nav/04.png')} /> <SectionBtnText style={{color:'#44BBFF'}} navOn={navOn===4}>생각</SectionBtnText></SectionBtn>
+                <SectionBtn onClick={secBtnClick} navOn={navOn===5}><img data-num='5' src={require('../../assets/images/icons/nanalil_nav/05.png')} /> <SectionBtnText style={{color:'#FBA474'}} navOn={navOn===5}>구현</SectionBtnText></SectionBtn>
+            </TabNav>
+
+            <WarningArea>   
                 <WarningImg src={require('../../assets/images/icons/error.png')} />
                 <WarningText>해당 포트폴리오는 권장 1920, 최소 1600 사이즈에서 볼 수 있습니다.</WarningText>
                 <BackBtn to='/'>돌아가기 <img src={require('../../assets/images/icons/back.png')} /></BackBtn>
             </WarningArea>
+
             <WorkTemplate
                 mainTitle={`나의 날씨 일기\n무드 트레커형 다이어리 앱`}
                 client={'개인작업'}
@@ -637,7 +738,7 @@ export default function Nanalil () {
                                 <Title>왜 만들게 됐어?<strong>나날일 제작 배경</strong></Title>
                             </Header> */}
 
-                            <AnimateHeader>
+                            <AnimateHeader ref={storyRef} id='story'>
                                 <HeaderBack>
                                     <CloudImage animateType={'right'} src={require(`../../assets/images/works/nanalil/why/cloud2.png`)} />
                                     <MoonImage src={require(`../../assets/images/works/nanalil/why/moon.png`)} />
@@ -725,7 +826,7 @@ export default function Nanalil () {
                         <Section style={{padding:0}}>
                             <Header style={{padding:0}}>
                                 <SectionName style={{background:'#44BBFF', color:'#fff'}}>Design Process</SectionName>
-                                <Title style={{color:'#333'}}>왜 만들게 됐어?<strong style={{color:'#44BBFF'}}>나날일 제작 배경</strong></Title>
+                                <Title style={{color:'#333'}}>나날일 제작<strong style={{color:'#44BBFF'}}>디자인 프로세스</strong></Title>
                             </Header>
                             <Article style={{marginTop: '80px'}}>
                                 <Image src={require('../../assets/images/works/nanalil/process/dublediamond.png')} />
@@ -735,7 +836,7 @@ export default function Nanalil () {
                         <SectionLine src={require('../../assets/images/works/nanalil/line.png')} />
 
                         <ResearchArea>
-                            <RSHeader>
+                            <RSHeader id='descover' ref={descoverRef}>
                                 <RSIcon><Image src={require('../../assets/images/works/nanalil/discover/research_icon.png')} /></RSIcon>
                                 <RSTitle>조사단계</RSTitle>
                                 <RSTitleEn>Discover</RSTitleEn>
@@ -825,7 +926,7 @@ export default function Nanalil () {
 
                             <SectionLine src={require('../../assets/images/works/nanalil/line.png')} />
 
-                            <RSHeader>
+                            <RSHeader id='define' ref={defineRef}>
                                 <RSIcon><Image src={require('../../assets/images/works/nanalil/define/define_icon.png')} /></RSIcon>
                                 <RSTitle>정의단계</RSTitle>
                                 <RSTitleEn>Define</RSTitleEn>
@@ -863,7 +964,7 @@ export default function Nanalil () {
                         <Image margin='150px auto 0' src={require('../../assets/images/works/nanalil/develop/main.png')} />
 
                         <ResearchArea style={{background: '#45528b', padding:'150px 0 200px'}}>
-                            <RSHeader>
+                            <RSHeader id='develop' ref={developRef}>
                                 <RSIcon><Image src={require('../../assets/images/works/nanalil/develop/develop_icon.png')} /></RSIcon>
                                 <RSTitle style={{color:'#fff'}}>생각단계</RSTitle>
                                 <RSTitleEn style={{color:'#fff'}}>Develop</RSTitleEn>
@@ -888,7 +989,7 @@ export default function Nanalil () {
                             </RSSTitleWrap>
                         </ResearchArea>
 
-                        <Image margin={'-130px auto 0'} src={require('../../assets/images/works/nanalil/develop/designsystem.png')} />
+                        <Image id='deliver' ref={deliverRef} margin={'-130px auto 0'} src={require('../../assets/images/works/nanalil/develop/designsystem.png')} />
 
                         <Image margin={'300px auto'} src={require('../../assets/images/works/nanalil/ui/coachmark.png')} />
 
@@ -896,7 +997,7 @@ export default function Nanalil () {
                             <VideoArea>
                                 <Image src={require('../../assets/images/works/nanalil/ui/onbarding_videoFrame.png')} />
                                 <VideoWrap>
-                                    <video playsinline autoPlay loop muted>
+                                    <video autoPlay loop muted>
                                         <source src={require('../../assets/videos/onboarding.mp4')} type='video/mp4' />
                                     </video>
                                 </VideoWrap>
