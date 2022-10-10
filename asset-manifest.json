@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/designPortfolio/static/js/main.e60bbe5c.js",
-    "static/media/record.mp4": "/designPortfolio/static/media/record.1ca50fcfb9627c750752.mp4",
-    "static/media/picture.mp4": "/designPortfolio/static/media/picture.fdfd36fad0f2d89a7c5c.mp4",
-    "static/media/onboarding.mp4": "/designPortfolio/static/media/onboarding.91bccad207b4755be36a.mp4",
-    "static/media/question.mp4": "/designPortfolio/static/media/question.164728bdc8bf0cd6f929.mp4",
+    "main.js": "/designPortfolio/static/js/main.ed322d8d.js",
+    "static/media/record.mp4": "/designPortfolio/static/media/record.96d1c7993dbfd3d06d6f.mp4",
+    "static/media/picture.mp4": "/designPortfolio/static/media/picture.93461131e6d94aeed519.mp4",
+    "static/media/onboarding.mp4": "/designPortfolio/static/media/onboarding.1a17c9ecc9c1382f8cf8.mp4",
     "static/media/productpage_result.png": "/designPortfolio/static/media/productpage_result.80f45bcb47dc6c847626.png",
     "static/media/snspage_ui.png": "/designPortfolio/static/media/snspage_ui.e7e1ce79877bb5257536.png",
     "static/media/cleaner_package.png": "/designPortfolio/static/media/cleaner_package.e50e02124cd7f8e939c8.png",
     "static/media/bannerpage_result.png": "/designPortfolio/static/media/bannerpage_result.e760f0a442fc6c7e9bb7.png",
+    "static/media/question.mp4": "/designPortfolio/static/media/question.15adadc7165a679d20c6.mp4",
     "static/media/bannerpage_banner.png": "/designPortfolio/static/media/bannerpage_banner.6b191bbbc831fb06da5c.png",
     "static/media/iamwebapp_productInfoPage.png": "/designPortfolio/static/media/iamwebapp_productInfoPage.83eb10b6995aef6c1f07.png",
     "static/media/ddbdd_01.png": "/designPortfolio/static/media/ddbdd_01.62a588a1965343de3c31.png",
@@ -45,7 +45,7 @@
     "static/media/productpage2.png": "/designPortfolio/static/media/productpage2.531cffbcf8ce72a1747f.png",
     "static/media/sor_result.png": "/designPortfolio/static/media/sor_result.c5b0fc8fd63be88bacaf.png",
     "static/media/schedule.png": "/designPortfolio/static/media/schedule.a442a4979892d5f17fbe.png",
-    "static/media/banner.png": "/designPortfolio/static/media/banner.c8854b18dc07c17fd2ae.png",
+    "static/media/banner.png": "/designPortfolio/static/media/banner.7251645b2f7bd1350f5b.png",
     "static/media/iamwebapp_section02.png": "/designPortfolio/static/media/iamwebapp_section02.0d64320f4921c5b83203.png",
     "static/media/eventpage_tvnMockup.png": "/designPortfolio/static/media/eventpage_tvnMockup.1f963b888ec01abfe782.png",
     "static/media/snspage.png": "/designPortfolio/static/media/snspage.d885f8857bcd47b7fb30.png",
@@ -58,10 +58,10 @@
     "static/media/cleaner.png": "/designPortfolio/static/media/cleaner.7bc0b20d803f28326752.png",
     "static/media/iamwebapp.png": "/designPortfolio/static/media/iamwebapp.ea443b282e76d83b3c4a.png",
     "static/media/onboarding.png": "/designPortfolio/static/media/onboarding.36cb523f1ffd2b987565.png",
-    "static/media/research_solution.png": "/designPortfolio/static/media/research_solution.133932119e1c793f973b.png",
     "static/media/profile.png": "/designPortfolio/static/media/profile.120817d62f508fb6fb5d.png",
+    "static/media/research_solution.png": "/designPortfolio/static/media/research_solution.ee0d64777e2b42e04238.png",
     "static/media/flowchart.png": "/designPortfolio/static/media/flowchart.ad96eef15d28ee4b9a8c.png",
-    "static/media/otherapp_solution.png": "/designPortfolio/static/media/otherapp_solution.dc7356d1fc224e3c7f65.png",
+    "static/media/otherapp_solution.png": "/designPortfolio/static/media/otherapp_solution.817b8fa792ce72f1caf2.png",
     "static/media/persona1.png": "/designPortfolio/static/media/persona1.2ab6c292279d2ab5fb71.png",
     "static/media/persona2.png": "/designPortfolio/static/media/persona2.3ab0244fdfcf06c9cd05.png",
     "static/media/iamwebapp_target.png": "/designPortfolio/static/media/iamwebapp_target.1c8ffda8d94ce8090a58.png",
@@ -69,9 +69,9 @@
     "static/media/bannerpage.png": "/designPortfolio/static/media/bannerpage.9b5a1d41e625f8551c95.png",
     "static/media/iamwebapp_section01.png": "/designPortfolio/static/media/iamwebapp_section01.b6096c911358b27f9810.png",
     "static/media/wadiz_solution.png": "/designPortfolio/static/media/wadiz_solution.04348ea341fa46a3ad02.png",
+    "static/media/persona1_map.png": "/designPortfolio/static/media/persona1_map.776606620ad20a8bdf59.png",
     "static/media/nanalil.png": "/designPortfolio/static/media/nanalil.1eea98c54c523342b33f.png",
-    "static/media/persona1_map.png": "/designPortfolio/static/media/persona1_map.89768b300c8bfcb9381f.png",
-    "static/media/persona2_map.png": "/designPortfolio/static/media/persona2_map.5347e6b48f83afadbdc8.png",
+    "static/media/persona2_map.png": "/designPortfolio/static/media/persona2_map.753e744e42260a2fe030.png",
     "static/media/sor_research2.png": "/designPortfolio/static/media/sor_research2.c551438e36d3b0eeffa8.png",
     "static/media/3.png": "/designPortfolio/static/media/3.071337604f9d97cfaa85.png",
     "static/media/1.png": "/designPortfolio/static/media/1.8d46cf1cef00e515449e.png",
@@ -93,7 +93,7 @@
     "static/media/keyword1.png": "/designPortfolio/static/media/keyword1.65677cb9d1ca0afe0848.png",
     "static/media/appvisual.png": "/designPortfolio/static/media/appvisual.69ffb2af3faf09281882.png",
     "static/media/persona1_solution.png": "/designPortfolio/static/media/persona1_solution.498cc4078e94fd12566b.png",
-    "static/media/research_result.png": "/designPortfolio/static/media/research_result.377ebe93a442f13bd4bf.png",
+    "static/media/research_result.png": "/designPortfolio/static/media/research_result.4162a1567ab66339932d.png",
     "static/media/persona2_solution.png": "/designPortfolio/static/media/persona2_solution.db8d722de8c3132a749c.png",
     "static/media/header.png": "/designPortfolio/static/media/header.0fdfa495aa5e76778f02.png",
     "static/media/ddbdd.png": "/designPortfolio/static/media/ddbdd.3ea2e49307bad246eda4.png",
@@ -118,9 +118,9 @@
     "static/media/iamwebapp_graph04.png": "/designPortfolio/static/media/iamwebapp_graph04.50bc724ccfef293721d2.png",
     "static/media/iamwebapp_graph03.png": "/designPortfolio/static/media/iamwebapp_graph03.0ce3fc72fe38104cc7b6.png",
     "index.html": "/designPortfolio/index.html",
-    "main.e60bbe5c.js.map": "/designPortfolio/static/js/main.e60bbe5c.js.map"
+    "main.ed322d8d.js.map": "/designPortfolio/static/js/main.ed322d8d.js.map"
   },
   "entrypoints": [
-    "static/js/main.e60bbe5c.js"
+    "static/js/main.ed322d8d.js"
   ]
 }
