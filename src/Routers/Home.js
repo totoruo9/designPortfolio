@@ -115,14 +115,17 @@ const IsMe = styled.div`
 `;
 
 const Banner = styled.div`
-    animation: ${flowAnimate} 100s linear infinite;
+    
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     position: relative;
     z-index:0;
+    overflow: hidden;
 
     img {
+        animation: ${flowAnimate} 100s linear infinite;
         transition:1s;
         opacity: ${props => props.scrollY ? 0.5 : 1};
         height: 32px;
@@ -304,12 +307,12 @@ export default function Home() {
                 <ItemWrap>
                     {
                         filterCategory.map((item, index) =>(
-                            // <Link key={item+index} to={`/works/${item}`}>
-                            //     <Item><ItemImg src={require(`../assets/images/workBanners/${item}.png`)} alt='' /></Item>
-                            // </Link>
-                            <a key={item+index} href={`/works/${item}`} target='_blank'>
+                            <Link key={item+index} to={`/works/${item}`}>
                                 <Item><ItemImg src={require(`../assets/images/workBanners/${item}.png`)} alt='' /></Item>
-                            </a>
+                            </Link>
+                            // <a key={item+index} href={`/works/${item}`} target='_blank'>
+                            //     <Item><ItemImg src={require(`../assets/images/workBanners/${item}.png`)} alt='' /></Item>
+                            // </a>
                         ))
                     }
                 </ItemWrap>

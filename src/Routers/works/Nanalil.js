@@ -328,8 +328,12 @@ const RSSTitle = styled.div`
 
 const RSSImage = styled.img`
     display: block;
-    width: auto;
+    width: 100%;
     margin: ${props => props.margin};
+
+    @media ${device.laptopL} {
+        width: auto;
+    }
 `;
 
 const RSSResultText = styled.p`
@@ -427,7 +431,13 @@ const PersonaWrap = styled.div`
     gap: 64px;
     margin-top: 80px;
     img {
-        width: auto;
+        width: 100%;
+    }
+
+    @media ${device.laptopL} {
+        img {
+            width: auto;
+        }
     }
 `;
 
@@ -568,17 +578,17 @@ const WarningArea = styled.div`
     position: fixed;
     width: 100%;
     height: 100%;
-    display: block;
+    display: flex;
     flex-direction: column;
     align-items:center;
     justify-content: center;
     background: rgba(0,0,0,.65);
-    z-index:50;
+    z-index:300;
 
-    @media ${device.desktop} {
+    @media ${device.laptop} {
         display: none;
     }
-`;s
+`;
 const WarningImg = styled.img`
 `;
 
@@ -704,8 +714,8 @@ export default function Nanalil () {
 
             <WarningArea>   
                 <WarningImg src={require('../../assets/images/icons/error.png')} />
-                <WarningText>해당 포트폴리오는 권장 1920, 최소 1600 사이즈에서 볼 수 있습니다.</WarningText>
-                <BackBtn to='/'>돌아가기 <img src={require('../../assets/images/icons/back.png')} /></BackBtn>
+                <WarningText>해당 포트폴리오는 권장 1920, 최소 1024 사이즈에서 볼 수 있습니다.</WarningText>
+                <BackBtn to='/'>다른 포트폴리오 보러가기 <img src={require('../../assets/images/icons/back.png')} /></BackBtn>
             </WarningArea>
 
             <WorkTemplate

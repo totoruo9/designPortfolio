@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { device, lightTheme } from '../theme';
@@ -24,6 +24,7 @@ const NavWrap = styled.ul`
     display: flex;
     padding: 24px 16px;
     border-bottom: 1px solid #eaeaea;
+    align-items: center;
 
     @media ${device.laptop} {
         padding: 24px;
@@ -35,23 +36,28 @@ const NavWrap = styled.ul`
 `;
 
 const NavItem = styled.li`
-    padding: 8px 8px;
-    border-radius: 8px;
-    background: ${props => props.focus ? '#0000ff' : '#fff'};
+    padding: ${props => props.focus ? '4px' : '0px'};
+    border-radius: 24px;
+    background: ${props => props.focus ? '#0000ff' : '#F8F9FF'};
     color: ${props => props.focus ? '#fff' : '#333'};
-    margin-right: 8px;
+    margin-right: 16px;
     text-align: center;
     cursor: pointer;
+    width: ${props => props.focus ? '36px' : '28px'};
+    height: ${props => props.focus ? '36px' : '28px'};
+
 
     :last-child {
-        padding: 8px 16px;
         margin-right: 0;
     }
 
     @media ${device.laptop} {
+        background: ${props => props.focus ? '#0000ff' : '#FFF'};
         padding: 8px 32px;
         margin-right: 24px;
         border-radius: 24px;
+        width: auto;
+        height: auto;
     }
 
     @media ${device.desktop} {
@@ -61,6 +67,10 @@ const NavItem = styled.li`
     }
 `;
 
+const NavHref = styled.a`
+    
+`;
+
 const ContentArea = styled.div`
     width: 100%;
     max-width: ${lightTheme.maxWidth};
@@ -68,7 +78,7 @@ const ContentArea = styled.div`
 `;
 
 const SectionArea = styled(ContentArea)`
-    margin: 8px auto 0;
+    margin: 24px auto 0;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -99,7 +109,7 @@ const SectionTextArea = styled.div`
 const SectionNum = styled.p`
     font-size: 24px;
     line-height: 32px;
-    font-weight: 900;
+    font-weight: 800;
     color: #333;
 
     @media ${device.laptop} {
@@ -160,8 +170,16 @@ const SectionImgArea = styled.img`
 const LinkBtnArea = styled.div`
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap:20px;
+    margin-top: 40px;
+
+    @media ${device.laptop} {
+        flex-direction: row;
+        gap:20px;
+        margin-top: 0;
+    }
 `;
 
 const LinkBtn = styled.a`
@@ -170,16 +188,37 @@ const LinkBtn = styled.a`
     gap: 4px;
     border-radius: 28px;
     color: #0000ff;
-    width: auto;
     font-size: 20px;
     line-height: 40px;
-    margin-top: 64px;
+    margin-top: 0;
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 100%;
+    text-align: center;
+    justify-content:center;
+
+    @media ${device.laptop} {
+        margin-top: 64px;
+        width: auto;
+    }
 `;
 
 export default function WorkNavTab ({id, navItem, focusNum, title, text, sectionImg, linkBtn, type='horezontal'}) {
+    const [winWidth, setWinWidth] = useState(0);
+
+    const handleResize = (event) => {
+        setWinWidth(prev => prev = event.currentTarget.innerWidth);
+    }
+
+    useEffect(() => {
+        setWinWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, [winWidth]);
+
     return (
         <>
         <NavigationTab id={id}>
@@ -187,7 +226,11 @@ export default function WorkNavTab ({id, navItem, focusNum, title, text, section
                 {
                     navItem.map((item, index) => (
                         <NavItem key={index} focus={focusNum === index}>
-                            <a href={`#${item.link}`}>{item.text}</a>
+                            <NavHref href={`#${item.link}`}>
+                                {
+                                    winWidth > 1024 ? item.text : index+1
+                                }
+                            </NavHref>
                         </NavItem>
                     ))
                 }

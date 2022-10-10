@@ -53,7 +53,7 @@ const MenuWrap = styled.ul`
 `;
 
 const Menu = styled.li`
-    display: none;
+    display: block;
     padding-left: 40px;
 
     @media ${device.laptop} {
@@ -66,7 +66,7 @@ const Menu = styled.li`
 `;
 
 const Hamburger = styled.img`
-    display: block;
+    display: none;
 
     @media ${device.laptop} {
         display: none;

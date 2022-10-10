@@ -3,7 +3,7 @@ import firebase from '../Firebase';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import { lightTheme } from 'theme';
+import { device, lightTheme } from 'theme';
 import { Timestamp, collection, getDocs, getFirestore, initializeFirestore, query, addDoc, orderBy } from 'firebase/firestore/lite';
 import { useForm } from 'react-hook-form';
 import dayjs from 'dayjs';
@@ -15,7 +15,11 @@ const InnerContainer = styled.div`
 `;
 
 const Container = styled(InnerContainer)`
-    margin-top: 160px;
+    margin-top: 0;
+
+    @media ${device.laptop} {
+        margin-top: 160px;
+    }
 `;
 
 const Profile = styled.img``;
@@ -23,12 +27,25 @@ const Profile = styled.img``;
 const ProfileWrap = styled.div`
     display: flex;
     gap: 40px;
+
+    flex-direction: column;
+
+    @media ${device.laptop} {
+        flex-direction: row;
+    }
 `;
 
 const Info = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    padding: 0 16px;
+
+    @media ${device.laptop} {
+        flex-direction: row;
+        padding: 0;
+    }
 `;
 
 const PrivacyWrap = styled.div``;
@@ -45,7 +62,11 @@ const CareerMapWrap = styled.div`
     display: flex;
     justify-content: end;
     flex-direction: column;
-    margin-bottom: 120px;
+    margin-bottom: 32px;    
+
+    @media ${device.laptop} {
+        margin-bottom: 120px;
+    }
 `;
 const CareerDate = styled.p`
     margin-top: 16px;
@@ -65,13 +86,22 @@ const LinkWrap = styled.div`
 const Linked = styled.a`
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 100%;
     justify-content: space-between;
     margin-bottom: 8px;
+    border: 1px solid #eaeaea;
+    padding: 8px 16px;
+    border-radius: 8px;
 
     img {
         width: 24px;
         height: 24px;
+    }
+
+    @media ${device.laptop} {
+        width: 200px;
+        padding: 0;
+        border: 0;
     }
 `;
 
@@ -94,6 +124,11 @@ const BannerWrap = styled.div`
     overflow: hidden;
     z-index:-1;
     margin-top: -80px;
+    display: none;
+
+    @media ${device.laptop} {
+        display: block;
+    }
 `;
 
 const Banner = styled.div`
@@ -104,7 +139,13 @@ const Banner = styled.div`
 
 const Tools = styled.div`
     display: flex;
-    gap: 200px;
+    gap: 64px;
+    flex-direction: column;
+
+    @media ${device.laptop} {
+        gap: 200px;
+        flex-direction: row;
+    }
 `;
 
 const ToolWrap = styled.div``;
@@ -133,6 +174,11 @@ const CollaboWrap = styled.form`
     margin: 0 auto;
     padding: 40px 16px;
     gap: 20px;
+    flex-direction: column;
+
+    @media ${device.laptop} {
+        flex-direction: row;
+    }
 `;
 const Category = styled.div`
     width: 100%;
@@ -149,6 +195,12 @@ const CateItemWrap = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-bottom: 20px;
+
+    @media ${device.laptop} {
+        margin:0;
+    }
+
 `;
 const CateItem = styled.p`
     border: 1px solid #F0F1FA;
@@ -260,10 +312,14 @@ const StateText = styled.p`
 
 const BoardItemWrap = styled(InnerContainer)`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-row-gap: 20px;
     grid-column-gap: 20px;
     justify-content: center;
+
+    @media ${device.laptop} {
+        grid-template-columns: repeat(3, 1fr);
+    }
 `;
 
 const BoardItem = styled.div`
@@ -273,6 +329,11 @@ const BoardItem = styled.div`
     border-radius: 8px;
     padding: 16px;
     background: #fff;
+    margin: 0 16px;
+
+    @media ${device.laptop} {
+        margin: 0;
+    }
 `;
 
 const BILeft = styled.div`
@@ -299,6 +360,14 @@ const BIRDate = styled.div`
     font-size:14px;
     line-height:20px;
     margin-top:4px;
+`;
+
+const Blank = styled.div`
+    display: none;
+
+    @media ${device.laptop} {
+        display: block;
+    }
 `;
 
 
@@ -442,7 +511,7 @@ export default function About() {
                                 <CareerDate>2013-2020</CareerDate>
                                 <CareerInfo>Kwangwon Institute of Information Technology</CareerInfo>
                             </CareerMapWrap>
-                            <div></div>
+                            <Blank></Blank>
                             <LinkWrap>
                                 <Linked target='_blank' href='https://github.com/totoruo9'><LinkName>Git hub</LinkName><img src={require('../assets/images/icons/export.png')} /></Linked>
                                 <Linked target='_blank' href='https://blog.naver.com/dnfl_cmc'><LinkName>DNFL Blog</LinkName><img src={require('../assets/images/icons/export.png')} /></Linked>
