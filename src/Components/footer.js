@@ -118,7 +118,7 @@ const goTop = () => {
 export default function FooterCom(){
     return (
         <>
-        <TopBtn src={require('../images/icons/top_btn.png')} alt='상단으로 이동하기 버튼' onClick={goTop} />
+        <TopBtn src={require('../assets/images/icons/top_btn.png')} alt='상단으로 이동하기 버튼' onClick={goTop} />
         <Shadow />
         <Footer>
             <FooterLeft>

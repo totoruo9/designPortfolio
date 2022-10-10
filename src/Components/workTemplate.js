@@ -207,7 +207,7 @@ export default function WorkTemplate({mainTitle, client, workArea, tools, explan
                         <ToolIcons>
                             {
                                 tools.map((item, index) => (
-                                    <ToolIcon key={index}><img src={require(`../images/icons/skill/${item}.png`)} /></ToolIcon>
+                                    <ToolIcon key={index}><img src={require(`../assets/images/icons/skill/${item}.png`)} /></ToolIcon>
                                 ))
                             }
                         </ToolIcons>
@@ -215,8 +215,8 @@ export default function WorkTemplate({mainTitle, client, workArea, tools, explan
                 </Header>
             </HeaderWrap>
             
-            <FixedBannerArea bgImg={require(`../images/works/${bannerImg}`)}>
-            <FixedBanner src={require(`../images/works/${bannerImg}`)} />
+            <FixedBannerArea bgImg={require(`../assets/images/works/${bannerImg}`)}>
+            <FixedBanner src={require(`../assets/images/works/${bannerImg}`)} />
             </FixedBannerArea>
             {
                 explan

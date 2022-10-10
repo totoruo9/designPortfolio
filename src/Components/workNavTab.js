@@ -41,6 +41,7 @@ const NavItem = styled.li`
     color: ${props => props.focus ? '#fff' : '#333'};
     margin-right: 8px;
     text-align: center;
+    cursor: pointer;
 
     :last-child {
         padding: 8px 16px;
@@ -175,6 +176,7 @@ const LinkBtn = styled.a`
     margin-top: 64px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 `;
 
 export default function WorkNavTab ({id, navItem, focusNum, title, text, sectionImg, linkBtn, type='horezontal'}) {
@@ -204,17 +206,17 @@ export default function WorkNavTab ({id, navItem, focusNum, title, text, section
                         {Array.isArray(linkBtn)
                         ?(
                             linkBtn.map((item, index) => (
-                                <LinkBtn target='_blank' href={item.link}><p>{item.text}</p><img src={require('../images/icons/link_arrow.png')} alt={'btn_arrow'} /></LinkBtn>
+                                <LinkBtn target='_blank' href={item.link}><p>{item.text}</p><img src={require('../assets/images/icons/link_arrow.png')} alt={'btn_arrow'} /></LinkBtn>
                             ))
                         )
-                        : <LinkBtn target='_blank' href={linkBtn.link}><p>{linkBtn.text}</p><img src={require('../images/icons/link_arrow.png')} alt={'btn_arrow'} /></LinkBtn>
+                        : <LinkBtn target='_blank' href={linkBtn.link}><p>{linkBtn.text}</p><img src={require('../assets/images/icons/link_arrow.png')} alt={'btn_arrow'} /></LinkBtn>
                         }
                     </LinkBtnArea>
                 }  
             </SectionTextArea>
             {sectionImg && Array.isArray(sectionImg)
                 ? sectionImg.map((item, index) => (
-                    <SectionImgArea sectionType={type} key={index} src={require(`../images/works/${item.src}`)} alt={`${item.alt}`} />
+                    <SectionImgArea sectionType={type} key={index} src={require(`../assets/images/works/${item.src}`)} alt={`${item.alt}`} />
                 ))
                 : null
             }

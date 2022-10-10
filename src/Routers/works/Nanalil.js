@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import { Content } from '../../Components/nanalilContents';
-import WorkContents from '../../Components/workContents';
-import { ContentImg } from '../../Components/workImages';
 import WorkTemplate from '../../Components/workTemplate';
 import { device, lightTheme } from '../../theme';
 
-const IMG_BASE_URL = '../../images/works/nanalil';
+const IMG_BASE_URL = '../../assets/images/works/nanalil';
 
 const ContentArea = styled.div`
     width: 100%;
@@ -215,7 +212,7 @@ const NewsSource = styled.p`
     color: #45528B;
 `;
 
-const NewsLink = styled(Link)`
+const NewsLink = styled.a`
     padding: 8px 16px;
     font-size: 14px;
     line-height: 24px;
@@ -582,19 +579,33 @@ const WarningArea = styled.div`
         display: none;
     }
 `;
-const WarningImg = styled.div`
+const WarningImg = styled.img`
 `;
 
-const BackBtn = styled.button``;
+const WarningText = styled.p`
+    color: #fff;
+`;
+
+const BackBtn = styled(Link)`
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+    border: 1px solid #fff;
+    margin-top: 64px;
+`;
 
 
 export default function Nanalil () {
     return (
         <>
             <WarningArea>
-                <WarningImg>!!!</WarningImg>
-                <p>해당 포트폴리오는 권장 1920, 최소 1556 크기에서 볼 수 있습니다.</p>
-                <BackBtn>돌아가기</BackBtn>
+                <WarningImg src={require('../../assets/images/icons/error.png')} />
+                <WarningText>해당 포트폴리오는 권장 1920, 최소 1600 사이즈에서 볼 수 있습니다.</WarningText>
+                <BackBtn to='/'>돌아가기 <img src={require('../../assets/images/icons/back.png')} /></BackBtn>
             </WarningArea>
             <WorkTemplate
                 mainTitle={`나의 날씨 일기\n무드 트레커형 다이어리 앱`}
@@ -610,28 +621,28 @@ export default function Nanalil () {
                             text={['나날일은 감정 표현에 어려움을 겪는 현대인들을 위해,', 'enter', '날씨로 감정을 기록하는 ','boldStart', '무드트레커형 다이어리 앱', 'boldEnd', '입니다.']}
                             src={'intro/appvisual.png'}
                         /> */}
-                        <Section bgUrl={require('../../images/works/nanalil/intro/background.png')}>
+                        <Section bgUrl={require('../../assets/images/works/nanalil/intro/background.png')}>
                             <Article>
                                 <TextArea>
                                     <Title>감정 날씨를 기록하는 <strong>나날일 앱 디자인</strong></Title>
                                     <Text>나날일은 감정 표현에 어려움을 겪는 현대인들을 위해,<br />날씨로 감정을 기록하는 <strong>'무드트레커형 다이어리 앱'</strong>입니다.</Text>
                                 </TextArea>
-                                <ImgArea><Image src={require(`../../images/works/nanalil/intro/appvisual.png`)} /></ImgArea>
+                                <ImgArea><Image src={require(`../../assets/images/works/nanalil/intro/appvisual.png`)} /></ImgArea>
                             </Article>
                         </Section>
 
                         <Section>
-                            {/* <Header bgUrl={require('../../images/works/nanalil/why/header.png')}>
+                            {/* <Header bgUrl={require('../../assets/images/works/nanalil/why/header.png')}>
                                 <SectionName>Background</SectionName>
                                 <Title>왜 만들게 됐어?<strong>나날일 제작 배경</strong></Title>
                             </Header> */}
 
                             <AnimateHeader>
                                 <HeaderBack>
-                                    <CloudImage animateType={'right'} src={require(`../../images/works/nanalil/why/cloud2.png`)} />
-                                    <MoonImage src={require(`../../images/works/nanalil/why/moon.png`)} />
-                                    <CloudImage animateType={'left'} src={require(`../../images/works/nanalil/why/cloud1.png`)} />
-                                    <SunnyImage src={require(`../../images/works/nanalil/why/sunny.png`)} />
+                                    <CloudImage animateType={'right'} src={require(`../../assets/images/works/nanalil/why/cloud2.png`)} />
+                                    <MoonImage src={require(`../../assets/images/works/nanalil/why/moon.png`)} />
+                                    <CloudImage animateType={'left'} src={require(`../../assets/images/works/nanalil/why/cloud1.png`)} />
+                                    <SunnyImage src={require(`../../assets/images/works/nanalil/why/sunny.png`)} />
                                 </HeaderBack>
 
                                 <HeaderTextArea>
@@ -655,7 +666,7 @@ export default function Nanalil () {
                                         <DataTitle>우리나라 기분장애 진료 인원</DataTitle>
                                         <DataInfo>
                                             <DataGraph>
-                                                <Image src={require('../../images/works/nanalil/why/graph.png')} />
+                                                <Image src={require('../../assets/images/works/nanalil/why/graph.png')} />
                                             </DataGraph>
                                             <DataTextArea>
                                                 <DataText>
@@ -670,14 +681,14 @@ export default function Nanalil () {
                                                         <NewsTitle>감정 왜곡에 빠진 현대인의 삶, 억압에서 벗어나기 위한 방법은?</NewsTitle>
                                                         <NewsSource>출처. 메디컬투데이</NewsSource>
                                                     </NewsTextWrap>
-                                                    <NewsLink to=''>기사 보러가기</NewsLink>
+                                                    <NewsLink href='https://mdtoday.co.kr/news/view/179581555128280' target='_blank'>기사 보러가기</NewsLink>
                                                 </DataNews>
                                                 <DataNews>
                                                     <NewsTextWrap>
                                                         <NewsTitle>국민건강보험공단 조사결과</NewsTitle>
                                                         <NewsSource>출처. 동아사이언스</NewsSource>
                                                     </NewsTextWrap>
-                                                    <NewsLink to=''>기사 보러가기</NewsLink>
+                                                    <NewsLink href='https://www.dongascience.com/news.php?idx=45392' target='_blank'>기사 보러가기</NewsLink>
                                                 </DataNews>
                                             </DataTextArea>
                                         </DataInfo>
@@ -703,7 +714,7 @@ export default function Nanalil () {
                                                 <strong>자신의 평균적인 감정 에너지의 방향을 파악</strong>할 수 있습니다.
                                             </Text>
                                         </TextArea>
-                                        <Image src={require('../../images/works/nanalil/why/chart.png')} />
+                                        <Image src={require('../../assets/images/works/nanalil/why/chart.png')} />
                                     </EmotionChartWrap>
                                 </WhyArea>
                             </Article>
@@ -717,15 +728,15 @@ export default function Nanalil () {
                                 <Title style={{color:'#333'}}>왜 만들게 됐어?<strong style={{color:'#44BBFF'}}>나날일 제작 배경</strong></Title>
                             </Header>
                             <Article style={{marginTop: '80px'}}>
-                                <Image src={require('../../images/works/nanalil/process/dublediamond.png')} />
+                                <Image src={require('../../assets/images/works/nanalil/process/dublediamond.png')} />
                             </Article>
                         </Section>
 
-                        <SectionLine src={require('../../images/works/nanalil/line.png')} />
+                        <SectionLine src={require('../../assets/images/works/nanalil/line.png')} />
 
                         <ResearchArea>
                             <RSHeader>
-                                <RSIcon><Image src={require('../../images/works/nanalil/discover/research_icon.png')} /></RSIcon>
+                                <RSIcon><Image src={require('../../assets/images/works/nanalil/discover/research_icon.png')} /></RSIcon>
                                 <RSTitle>조사단계</RSTitle>
                                 <RSTitleEn>Discover</RSTitleEn>
                             </RSHeader>
@@ -740,16 +751,16 @@ export default function Nanalil () {
                                         <RSSTitle>사용자 설문조사</RSSTitle>
                                     </RSSTitleWrap>
 
-                                    <RSSImage margin='80px auto 0' src={require('../../images/works/nanalil/discover/research_pain.png')} />
-                                    <RSSImage margin='120px auto 0' src={require('../../images/works/nanalil/discover/research_result.png')} />
+                                    <RSSImage margin='80px auto 0' src={require('../../assets/images/works/nanalil/discover/research_pain.png')} />
+                                    <RSSImage margin='120px auto 0' src={require('../../assets/images/works/nanalil/discover/research_result.png')} />
                                     <RSSResultText>
                                         다이어리 작성자 중 <strong>여성의 80%는 다이어리 앱 이용 경험</strong>이 있으며<br />
                                         그 중 <strong>58%는 다이어리 앱 이용을 중단</strong>하였습니다.   
                                     </RSSResultText>
-                                    <RSSImage margin='40px auto 0' src={require('../../images/works/nanalil/discover/research_solution.png')} />
+                                    <RSSImage margin='40px auto 0' src={require('../../assets/images/works/nanalil/discover/research_solution.png')} />
                                 </RSSection>
 
-                                <RSSImage margin='120px auto' src={require('../../images/works/nanalil/discover/line.png')} />
+                                <RSSImage margin='120px auto' src={require('../../assets/images/works/nanalil/discover/line.png')} />
 
                                 <RSSection>
                                     <RSSTitleWrap>
@@ -763,23 +774,23 @@ export default function Nanalil () {
                                     <RSSSubTitle>01. 와디즈 다이어리 키워드 조사</RSSSubTitle>
                                     <RSSSSubText>와디즈에서 다이어리 키워드를 검색하여 달성률 500% 이상 판매 금액 500만원 이상의 상품을 기준으로 선정하였습니다.<br />
                                     해당 상품들을 보며 기존 다이어리와의 차별점 / 사용자들의 니즈를 조사했습니다.</RSSSSubText>
-                                    <RSSImage margin='0 auto' src={require('../../images/works/nanalil/discover/wadiz_research.png')} />
-                                    <RSSImage margin='40px auto 0' src={require('../../images/works/nanalil/discover/wadiz_solution.png')} />
+                                    <RSSImage margin='0 auto' src={require('../../assets/images/works/nanalil/discover/wadiz_research.png')} />
+                                    <RSSImage margin='40px auto 0' src={require('../../assets/images/works/nanalil/discover/wadiz_solution.png')} />
 
                                     <RSSSubTitle style={{marginTop: '120px'}}>02. 다이어리 앱 조사</RSSSubTitle>
                                     <RSSSSubText><strong>설문조사 결과 가장 많이 사용하는 다이어리 앱 3종</strong> (Mooda, Daily Note, Good Note)과<br />
                                     <strong>앱스토어 검색 상위 노출 2종</strong> (해마일기, 다욜)을 기준으로 조사를 실시하였습니다.</RSSSSubText>
-                                    <RSSImage margin='80px auto 0' src={require('../../images/works/nanalil/discover/otherapp_research.png')} />
-                                    <RSSImage margin='80px auto 0' src={require('../../images/works/nanalil/discover/otherapp_solution.png')} />
+                                    <RSSImage margin='80px auto 0' src={require('../../assets/images/works/nanalil/discover/otherapp_research.png')} />
+                                    <RSSImage margin='80px auto 0' src={require('../../assets/images/works/nanalil/discover/otherapp_solution.png')} />
                                 </RSSection>
                             </RSDiscoverWrap>
 
                             <KeywordArea>
                                 <KeywordSlid>
-                                    <Keyword align='right' src={require('../../images/works/nanalil/discover/keyword1.png')} />
-                                    <Keyword src={require('../../images/works/nanalil/discover/keyword1.png')} />
-                                    <Keyword align='right' src={require('../../images/works/nanalil/discover/keyword2.png')} />
-                                    <Keyword src={require('../../images/works/nanalil/discover/keyword2.png')} />
+                                    <Keyword align='right' src={require('../../assets/images/works/nanalil/discover/keyword1.png')} />
+                                    <Keyword src={require('../../assets/images/works/nanalil/discover/keyword1.png')} />
+                                    <Keyword align='right' src={require('../../assets/images/works/nanalil/discover/keyword2.png')} />
+                                    <Keyword src={require('../../assets/images/works/nanalil/discover/keyword2.png')} />
                                 </KeywordSlid>
                                 <KeywordText>
                                 * Sometrend의 최근 한 달 SNS 언급 키워드를 분석하여 <strong>다이어리에 대한 사람들의 감정 / 느낌을 파악</strong>하고자 하였습니다.<br />
@@ -788,26 +799,7 @@ export default function Nanalil () {
                             </KeywordArea>
 
                             <RSDiscoverWrap>
-                                <RSSection>
-                                    <RSSTitleWrap>
-                                        <RSSName>
-                                            <RSSNumber>01</RSSNumber>
-                                            <RSSNTitle>Discover</RSSNTitle>
-                                        </RSSName>
-                                        <RSSTitle>사용자 설문조사</RSSTitle>
-                                    </RSSTitleWrap>
-
-                                    <RSSImage margin='80px auto 0' src={require('../../images/works/nanalil/discover/research_pain.png')} />
-                                    <RSSImage margin='120px auto 0' src={require('../../images/works/nanalil/discover/research_result.png')} />
-                                    <RSSResultText>
-                                        다이어리 작성자 중 <strong>여성의 80%는 다이어리 앱 이용 경험</strong>이 있으며<br />
-                                        그 중 <strong>58%는 다이어리 앱 이용을 중단</strong>하였습니다.   
-                                    </RSSResultText>
-                                    <RSSImage margin='40px auto 0' src={require('../../images/works/nanalil/discover/research_solution.png')} />
-                                </RSSection>
-
-                                <RSSImage margin='120px auto' src={require('../../images/works/nanalil/discover/line.png')} />
-
+                                
                                 <RSSection>
                                     <RSSTitleWrap>
                                         <RSSName>
@@ -819,22 +811,22 @@ export default function Nanalil () {
                                         <strong>설문조사를 토대로 가설을 설정</strong>하였습니다.</RSSText>
                                     </RSSTitleWrap>
 
-                                    <RSSImage margin='64px auto 0' src={require('../../images/works/nanalil/discover/sor_research.png')} />
-                                    <RSSImage margin='64px auto 0' src={require('../../images/works/nanalil/discover/sor_research2.png')} />
+                                    <RSSImage margin='64px auto 0' src={require('../../assets/images/works/nanalil/discover/sor_research.png')} />
+                                    <RSSImage margin='64px auto 0' src={require('../../assets/images/works/nanalil/discover/sor_research2.png')} />
 
                                     <RSSResultText>
                                         귀찮음과 두려움이라는 벽을 넘어<br />
                                         <strong>당신의 삶을 균형 있게 기록할 수 있도록!</strong>
                                     </RSSResultText>
 
-                                    <RSSImage margin='40px auto 0' style={{paddingBottom: '40px'}} src={require('../../images/works/nanalil/discover/sor_result.png')} />
+                                    <RSSImage margin='40px auto 0' style={{paddingBottom: '40px'}} src={require('../../assets/images/works/nanalil/discover/sor_result.png')} />
                                 </RSSection>
                             </RSDiscoverWrap>
 
-                            <SectionLine src={require('../../images/works/nanalil/line.png')} />
+                            <SectionLine src={require('../../assets/images/works/nanalil/line.png')} />
 
                             <RSHeader>
-                                <RSIcon><Image src={require('../../images/works/nanalil/define/define_icon.png')} /></RSIcon>
+                                <RSIcon><Image src={require('../../assets/images/works/nanalil/define/define_icon.png')} /></RSIcon>
                                 <RSTitle>정의단계</RSTitle>
                                 <RSTitleEn>Define</RSTitleEn>
                             </RSHeader>
@@ -847,12 +839,12 @@ export default function Nanalil () {
                                 <RSSTitle>퍼소나 설정</RSSTitle>
                                 
                                 <PersonaWrap>
-                                    <Image src={require('../../images/works/nanalil/define/persona1.png')} />
-                                    <Image src={require('../../images/works/nanalil/define/persona2.png')} />
+                                    <Image src={require('../../assets/images/works/nanalil/define/persona1.png')} />
+                                    <Image src={require('../../assets/images/works/nanalil/define/persona2.png')} />
                                 </PersonaWrap>
                             </RSSTitleWrap>
 
-                            <SectionLine src={require('../../images/works/nanalil/line.png')} />
+                            <SectionLine src={require('../../assets/images/works/nanalil/line.png')} />
 
                             <RSSTitleWrap>
                                 <RSSName>
@@ -861,18 +853,18 @@ export default function Nanalil () {
                                 </RSSName>
                                 <RSSTitle>저니맵</RSSTitle>
                                 
-                                <Image margin={'64px auto 0'} type='inner' src={require('../../images/works/nanalil/define/persona1_map.png')} />
-                                <Image type='inner' src={require('../../images/works/nanalil/define/persona1_solution.png')} />
-                                <Image margin={'120px auto 0'} type='inner' src={require('../../images/works/nanalil/define/persona2_map.png')} />
-                                <Image type='inner' src={require('../../images/works/nanalil/define/persona2_solution.png')} />
+                                <Image margin={'64px auto 0'} type='inner' src={require('../../assets/images/works/nanalil/define/persona1_map.png')} />
+                                <Image type='inner' src={require('../../assets/images/works/nanalil/define/persona1_solution.png')} />
+                                <Image margin={'120px auto 0'} type='inner' src={require('../../assets/images/works/nanalil/define/persona2_map.png')} />
+                                <Image type='inner' src={require('../../assets/images/works/nanalil/define/persona2_solution.png')} />
                             </RSSTitleWrap>
                         </ResearchArea>
 
-                        <Image margin='150px auto 0' src={require('../../images/works/nanalil/develop/main.png')} />
+                        <Image margin='150px auto 0' src={require('../../assets/images/works/nanalil/develop/main.png')} />
 
                         <ResearchArea style={{background: '#45528b', padding:'150px 0 200px'}}>
                             <RSHeader>
-                                <RSIcon><Image src={require('../../images/works/nanalil/develop/develop_icon.png')} /></RSIcon>
+                                <RSIcon><Image src={require('../../assets/images/works/nanalil/develop/develop_icon.png')} /></RSIcon>
                                 <RSTitle style={{color:'#fff'}}>생각단계</RSTitle>
                                 <RSTitleEn style={{color:'#fff'}}>Develop</RSTitleEn>
                             </RSHeader>
@@ -883,7 +875,7 @@ export default function Nanalil () {
                                     <RSSNTitle style={{color: '#44bbff'}}>Develop</RSSNTitle>
                                 </RSSName>
                                 <RSSTitle style={{color:'#fff'}}>플로우 차트</RSSTitle>
-                                <Image margin={'64px auto 0'} type='inner' src={require('../../images/works/nanalil/develop/flowchart.png')} />
+                                <Image margin={'64px auto 0'} type='inner' src={require('../../assets/images/works/nanalil/develop/flowchart.png')} />
                             </RSSTitleWrap>
 
                             <RSSTitleWrap style={{marginTop: '200px'}}>
@@ -892,33 +884,33 @@ export default function Nanalil () {
                                     <RSSNTitle style={{color: '#44bbff'}}>Develop</RSSNTitle>
                                 </RSSName>
                                 <RSSTitle style={{color:'#fff'}}>와이어 프레임</RSSTitle>
-                                <Image margin={'64px auto 0'} src={require('../../images/works/nanalil/develop/wireframe.png')} />
+                                <Image margin={'64px auto 0'} src={require('../../assets/images/works/nanalil/develop/wireframe.png')} />
                             </RSSTitleWrap>
                         </ResearchArea>
 
-                        <Image margin={'-130px auto 0'} src={require('../../images/works/nanalil/develop/designsystem.png')} />
+                        <Image margin={'-130px auto 0'} src={require('../../assets/images/works/nanalil/develop/designsystem.png')} />
 
-                        <Image margin={'300px auto'} src={require('../../images/works/nanalil/ui/coachmark.png')} />
+                        <Image margin={'300px auto'} src={require('../../assets/images/works/nanalil/ui/coachmark.png')} />
 
                         <OnboardingWrap>
                             <VideoArea>
-                                <Image src={require('../../images/works/nanalil/ui/onbarding_videoFrame.png')} />
+                                <Image src={require('../../assets/images/works/nanalil/ui/onbarding_videoFrame.png')} />
                                 <VideoWrap>
-                                    <video autoPlay={true} loop={true} muted>
+                                    <video playsinline autoPlay loop muted>
                                         <source src={require('../../assets/videos/onboarding.mp4')} type='video/mp4' />
                                     </video>
                                 </VideoWrap>
                             </VideoArea>
 
-                            <Image src={require('../../images/works/nanalil/ui/onboarding.png')} />
+                            <Image src={require('../../assets/images/works/nanalil/ui/onboarding.png')} />
                         </OnboardingWrap>
 
-                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/mainpage.png')} />
+                        <Image margin={'200px auto 0'} src={require('../../assets/images/works/nanalil/ui/mainpage.png')} />
 
-                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/diary.png')} />
+                        <Image margin={'200px auto 0'} src={require('../../assets/images/works/nanalil/ui/diary.png')} />
 
                         <DiaryVideo>
-                            <Image src={require('../../images/works/nanalil/ui/question_video.png')} />
+                            <Image src={require('../../assets/images/works/nanalil/ui/question_video.png')} />
                             <VideoWrap>
                                 <video autoPlay={true} loop={true} muted>
                                     <source src={require('../../assets/videos/question.mp4')} type='video/mp4' />
@@ -927,7 +919,7 @@ export default function Nanalil () {
                         </DiaryVideo>
 
                         <DiaryVideo>
-                            <Image src={require('../../images/works/nanalil/ui/picture_video.png')} />
+                            <Image src={require('../../assets/images/works/nanalil/ui/picture_video.png')} />
                             <VideoWrap style={{textAlign: 'right', right:'40px'}}>
                                 <video autoPlay={true} loop={true} muted>
                                     <source src={require('../../assets/videos/picture.mp4')} type='video/mp4' />
@@ -936,7 +928,7 @@ export default function Nanalil () {
                         </DiaryVideo>
 
                         <DiaryVideo>
-                            <Image src={require('../../images/works/nanalil/ui/recoard_video.png')} />
+                            <Image src={require('../../assets/images/works/nanalil/ui/recoard_video.png')} />
                             <VideoWrap>
                                 <video autoPlay={true} loop={true} muted>
                                     <source src={require('../../assets/videos/record.mp4')} type='video/mp4' />
@@ -944,10 +936,10 @@ export default function Nanalil () {
                             </VideoWrap>
                         </DiaryVideo>
 
-                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/goal.png')} />
-                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/schedule.png')} />
-                        <Image margin={'200px auto 0'} src={require('../../images/works/nanalil/ui/setting.png')} />
-                        <Image margin={'0 auto -40px'} src={require('../../images/works/nanalil/ui/footer.png')} />
+                        <Image margin={'200px auto 0'} src={require('../../assets/images/works/nanalil/ui/goal.png')} />
+                        <Image margin={'200px auto 0'} src={require('../../assets/images/works/nanalil/ui/schedule.png')} />
+                        <Image margin={'200px auto 0'} src={require('../../assets/images/works/nanalil/ui/setting.png')} />
+                        <Image margin={'0 auto -40px'} src={require('../../assets/images/works/nanalil/ui/footer.png')} />
                 </>
                 }
             />

@@ -186,6 +186,7 @@ const ItemImg = styled.img`
     width:100%;
     height: 100%;
     transition: .5s;
+    cursor: pointer;
 
     :hover {
         transform: scale(.98);
@@ -215,6 +216,7 @@ const FilterItem = styled.li`
     color: ${props => props.colorOn ? '#fff' : '#333'};
     background: ${props => props.colorOn ? '#0000ff' : '#fff'};
     font-size: 14px;
+    cursor: pointer;
 
     @media ${device.laptop} {
         padding: 8px 24px;
@@ -285,9 +287,9 @@ export default function Home() {
             </Visual>
             
             <BannerWrap>
-                <Banner scrollY={scrollY}> <img src={require('../images/banner.png')}/> <img src={require('../images/banner.png')}/> </Banner>
+                <Banner scrollY={scrollY}><img src={require('../assets/images/banner.png')}/></Banner>
                 <IsMe>
-                    <img src={require(`../images/isMe/${ismeCnt}.png`)}/>
+                    <img src={require(`../assets/images/isMe/${ismeCnt}.png`)}/>
                 </IsMe>
             </BannerWrap>
 
@@ -302,9 +304,12 @@ export default function Home() {
                 <ItemWrap>
                     {
                         filterCategory.map((item, index) =>(
-                            <Link key={item+index} to={`/works/${item}`}>
-                                <Item><ItemImg src={require(`../images/workBanners/${item}.png`)} alt='' /></Item>
-                            </Link>
+                            // <Link key={item+index} to={`/works/${item}`}>
+                            //     <Item><ItemImg src={require(`../assets/images/workBanners/${item}.png`)} alt='' /></Item>
+                            // </Link>
+                            <a key={item+index} href={`/works/${item}`} target='_blank'>
+                                <Item><ItemImg src={require(`../assets/images/workBanners/${item}.png`)} alt='' /></Item>
+                            </a>
                         ))
                     }
                 </ItemWrap>

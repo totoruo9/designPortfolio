@@ -157,6 +157,7 @@ const CateItem = styled.p`
     color: ${props => props.clickOn ? '#fff' : '#aaa'};
     font-size:14px;
     line-height: 24px;
+    cursor: pointer;
 
     background: ${props => props.clickOn ? '#0000ff' : '#fff'};
 `;
@@ -220,6 +221,7 @@ const SubmitBtn = styled.input`
     font-size: 20px;
     line-height:40px;
     margin-top: 64px;
+    cursor: pointer;
 `;
 
 const BoardWrap = styled.div`
@@ -406,7 +408,7 @@ export default function About() {
                 <>
                 <Container>
                     <ProfileWrap>
-                        <Profile src={require('../images/about/profile.png')} />
+                        <Profile src={require('../assets/images/about/profile.png')} />
                         <Info>
                             <PrivacyWrap>
                                 <PrivacyName>Name</PrivacyName>
@@ -442,16 +444,16 @@ export default function About() {
                             </CareerMapWrap>
                             <div></div>
                             <LinkWrap>
-                                <Linked target='_blank' href='https://github.com/totoruo9'><LinkName>Git hub</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked target='_blank' href='https://blog.naver.com/dnfl_cmc'><LinkName>DNFL Blog</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked target='_blank' href='https://ddbdd.stibee.com/'><LinkName>뜨브뜨 Newsletter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
-                                <Linked target='_blank' href='https://www.instagram.com/wegle.letter/'><LinkName>wegle.letter</LinkName><img src={require('../images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://github.com/totoruo9'><LinkName>Git hub</LinkName><img src={require('../assets/images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://blog.naver.com/dnfl_cmc'><LinkName>DNFL Blog</LinkName><img src={require('../assets/images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://ddbdd.stibee.com/'><LinkName>뜨브뜨 Newsletter</LinkName><img src={require('../assets/images/icons/export.png')} /></Linked>
+                                <Linked target='_blank' href='https://www.instagram.com/wegle.letter/'><LinkName>wegle.letter</LinkName><img src={require('../assets/images/icons/export.png')} /></Linked>
                             </LinkWrap>
                         </Info>
                     </ProfileWrap>
                 </Container>
                 <BannerWrap>
-                    <Banner> <img src={require('../images/banner.png')}/> <img src={require('../images/banner.png')}/> </Banner>
+                    <Banner> <img src={require('../assets/images/banner.png')}/> <img src={require('../assets/images/banner.png')}/> </Banner>
                 </BannerWrap>
 
                 <Container style={{margin: '64px auto 0'}}>
@@ -459,29 +461,29 @@ export default function About() {
                         <ToolWrap>
                             <Title>Design Tools</Title>
                             <ToolIcons>
-                                <img src={require('../images/icons/skill/ai.png')} />
-                                <img src={require('../images/icons/skill/ps.png')} />
-                                <img src={require('../images/icons/skill/xd.png')} />
-                                <img src={require('../images/icons/skill/figma.png')} />
+                                <img src={require('../assets/images/icons/skill/ai.png')} />
+                                <img src={require('../assets/images/icons/skill/ps.png')} />
+                                <img src={require('../assets/images/icons/skill/xd.png')} />
+                                <img src={require('../assets/images/icons/skill/figma.png')} />
                             </ToolIcons>
                         </ToolWrap>
 
                         <ToolWrap>
                             <Title>Develop Skill</Title>
                             <ToolIcons>
-                                <img src={require('../images/icons/skill/html.png')} />
-                                <img src={require('../images/icons/skill/css.png')} />
-                                <img src={require('../images/icons/skill/js.png')} />
-                                <img src={require('../images/icons/skill/react.png')} />
-                                <img src={require('../images/icons/skill/firebase.png')} />
-                                <img src={require('../images/icons/skill/git.png')} />
+                                <img src={require('../assets/images/icons/skill/html.png')} />
+                                <img src={require('../assets/images/icons/skill/css.png')} />
+                                <img src={require('../assets/images/icons/skill/js.png')} />
+                                <img src={require('../assets/images/icons/skill/react.png')} />
+                                <img src={require('../assets/images/icons/skill/firebase.png')} />
+                                <img src={require('../assets/images/icons/skill/git.png')} />
                             </ToolIcons>
                         </ToolWrap>
                     </Tools>
 
-                    <Title style={{marginTop: '80px'}}>About</Title>
-                    <Text>
-                    온갖 우는 따뜻한 끓는 이성은 있으랴? 천지는 그들은 찬미를 되려니와, 그들에게 할지라도 생생하며, 찾아다녀도, 듣는다. 이것이야말로 얼마나 능히 너의 봄바람이다. 있는 열락의 싹이 능히 봄날의 동력은 이것이다. 피어나는 힘차게 같이, 인생의 크고 뭇 찾아 위하여서. 가치를 끓는 가장 보이는 말이다. 영원히 이상이 열락의 뿐이다. 거친 실로 인도하겠다는 것이다.보라, 이것을 못할 청춘의 그것은 이상은 보라. 인간의 두기 돋고, 인생을 품었기 옷을 청춘에서만 사막이다. 많이 용감하고 용기가 아름다우냐?
+                    <Title style={{marginTop: '80px', display: 'none'}}>About</Title>
+                    <Text style={{display: 'none'}}>
+                    {``}
                     </Text>
 
                     <Title style={{marginTop: '80px'}}>Collaboration or Inquiries</Title>

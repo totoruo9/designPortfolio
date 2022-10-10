@@ -90,13 +90,13 @@ export function ContentImg({type='default', padding, margin, src, alt, children,
             return (
                 minHeight
                     ? (
-                        <FullWidthImg margin={margin} bgImg={require(`../images/works/${src}`)} minHeight={minHeight}>
+                        <FullWidthImg margin={margin} bgImg={require(`../assets/images/works/${src}`)} minHeight={minHeight}>
                             {children}
                         </FullWidthImg>
                     )
                     : (
                         <FullWidthImg margin={margin}>
-                            <Image src={require(`../images/works/${src}`)} alt={alt} />
+                            <Image src={require(`../assets/images/works/${src}`)} alt={alt} />
                             {children}
                         </FullWidthImg>
                     )
@@ -108,18 +108,18 @@ export function ContentImg({type='default', padding, margin, src, alt, children,
                         {
                             images.map((item, index) => (
                                 <HorizontalWrap key={index}>
-                                    <HorizontalItem src={require(`../images/works/${item.src}`)} alt={item.alt} />
+                                    <HorizontalItem src={require(`../assets/images/works/${item.src}`)} alt={item.alt} />
                                 </HorizontalWrap>
                             ))
                         }
                     </HorizontalScroll>
-                    <SlideImg src={require('../images/icons/slideImg.png')} />
+                    <SlideImg src={require('../assets/images/icons/slideImg.png')} />
                 </HorizontalArea>
             )
         default:
             return (
                 <InnerImgArea padding={padding}>
-                    <Image src={require(`../images/works/${src}`)} alt={alt}/>
+                    <Image src={require(`../assets/images/works/${src}`)} alt={alt}/>
                 </InnerImgArea>
             )
     }

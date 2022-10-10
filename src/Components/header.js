@@ -15,6 +15,7 @@ const HeaderWrap = styled.header`
     z-index:1000;
     padding: 24px 16px;
     transition: 300ms;
+    /* cursor: not-allowed; */
 
     @media ${device.laptop} {
         padding: 24px;
@@ -92,12 +93,12 @@ const onClick = (item) => {
 export default function HeaderCom() {
     return (
         <HeaderWrap onClick={onClick}>
-            <Logo><Link to='/'><img src={require('../images/logo02.png')} alt='logo' /></Link></Logo>
+            <Logo><Link to='/'><img src={require('../assets/images/logo01.png')} alt='logo' /></Link></Logo>
             <MenuWrap>
                 <Menu><Link to='/'>work</Link></Menu>
                 <Menu><Link to='/about'>about</Link></Menu>
 
-                <Hamburger src={require('../images/icons/menu_btn.png')} />
+                <Hamburger src={require('../assets/images/icons/menu_btn.png')} />
             </MenuWrap>
         </HeaderWrap>
     )

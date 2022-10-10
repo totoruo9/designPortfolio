@@ -290,7 +290,7 @@ export default function IamWebApp () {
                                 />
                             </ColorTextWrap>
 
-                            <ColorImg src={require('../../images/works/iamwebapp/iamwebapp_color.png')} alt='브랜드 컬러 변경, #E94753 -> #ff4a5b' />
+                            <ColorImg src={require('../../assets/images/works/iamwebapp/iamwebapp_color.png')} alt='브랜드 컬러 변경, #E94753 -> #ff4a5b' />
                         </ColorSection>
 
                         <WorkContents
@@ -374,8 +374,8 @@ export default function IamWebApp () {
 
                         <DubleGrideImgArea>
                             <DGWrap>
-                                <Image src={require('../../images/works/iamwebapp/iamwebapp_graph01.png')} />
-                                <Image src={require('../../images/works/iamwebapp/iamwebapp_graph02.png')} />
+                                <Image src={require('../../assets/images/works/iamwebapp/iamwebapp_graph01.png')} />
+                                <Image src={require('../../assets/images/works/iamwebapp/iamwebapp_graph02.png')} />
                             </DGWrap>
                             <DGText>
                             사용자들이 자사몰 방문시 처음 접근하는 페이지의 비중이 가장 높은 5개를 순서대로 선정하였으며, 해당 페이지를 기준으로 탐색 후 구매가 이루어진 평균 값을 구하였습니다.
@@ -392,7 +392,7 @@ export default function IamWebApp () {
 
                         <GraphTextArea>
                             <GTGraph>
-                                <Image src={require('../../images/works/iamwebapp/iamwebapp_graph03.png')} alt='개선율 보여주는 그래프' />
+                                <Image src={require('../../assets/images/works/iamwebapp/iamwebapp_graph03.png')} alt='개선율 보여주는 그래프' />
                             </GTGraph>
                             <GTText>
                             UI 개선 이후 미니어처 모음전에서의<br />
