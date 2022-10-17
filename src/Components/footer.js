@@ -81,7 +81,6 @@ const Logo = styled.p`
     line-height: 40px;
     font-weight: 900;
     color: #1c1c1c;
-    font-family: 'Roboto';
     letter-spacing: -0.05em;
 `;
 const Copyright = styled.p`

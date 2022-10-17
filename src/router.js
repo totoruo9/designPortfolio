@@ -1,3 +1,4 @@
+import ErrorPage from 'Routers/Error';
 import React from 'react';
 import { createRoot } from "react-dom/client";
 import {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
+      errorElement: <ErrorPage />
     },
     {
       path: "/about",

@@ -6,6 +6,14 @@ import { device, lightTheme } from '../../theme';
 
 const IMG_BASE_URL = '../../assets/images/works/nanalil';
 
+const Container = styled.div`
+    display: none;
+
+    @media ${device.laptopL} {
+        display: block;
+    }
+`;
+
 const ContentArea = styled.div`
     width: 100%;
     max-width: ${lightTheme.maxWidth};
@@ -239,9 +247,14 @@ const EmotionChartWrap = styled.div`
     display: flex;
     gap: 20px;
     margin-top: 160px;
+    flex-direction: column;
 
     div {
         width: 100%;
+    }
+
+    @media ${device.laptopL} {
+        flex-direction: row;
     }
 `;
 
@@ -428,13 +441,15 @@ const RSSText = styled.p`
 
 const PersonaWrap = styled.div`
     display: flex;
-    gap: 64px;
     margin-top: 80px;
+    flex-direction: column;
     img {
         width: 100%;
     }
 
     @media ${device.laptopL} {
+        gap: 64px;
+        flex-direction: row;
         img {
             width: auto;
         }
@@ -449,20 +464,27 @@ const OnboardingWrap = styled.div`
     max-width: ${lightTheme.maxWidth};
     margin: 0 auto;
 
-    img { 
-        width: auto;
+    @media ${device.laptopL} {
+        img {
+            width: auto;
+        }
     }
 `;
 
 const VideoArea = styled.div`
     position: relative;
-    width: 380px;
-    height: 800px;
+    width: auto;
+    height: auto;
 
     img {
         position: absolute;
         top:0;
         width: 100%;
+    }
+
+    @media ${device.laptopL} {
+        width: 380px;
+        height: 800px;
     }
 `;
 
@@ -470,12 +492,16 @@ const VideoWrap = styled.div`
     position: absolute;
     top:0;
     width: 100%;
-    
+    display: none;
     padding: 16px 13px 24px 13px;
 
     video {
         width: 100%;
         border-radius: 40px;
+    }
+
+    @media ${device.laptopL} {
+        display: block;
     }
 `;
 
@@ -702,6 +728,7 @@ export default function Nanalil () {
             window.scrollTo({top: deliverRefTop+100, behavior: "smooth"});
         }
     };
+
     return (
         <>
             <TabNav>
@@ -725,7 +752,7 @@ export default function Nanalil () {
                 tools={['ps', 'ai', 'figma', 'xd']}
                 bannerImg={'nanalil/banner.png'}
                 contents={
-                    <>
+                    <Container>
                         {/* <Content
                             bgUrl={'intro/background.png'}
                             title={{top:'감정 날씨를 기록하는', bottom:'나날일 앱 디자인'}}
@@ -1051,7 +1078,7 @@ export default function Nanalil () {
                         <Image margin={'200px auto 0'} src={require('../../assets/images/works/nanalil/ui/schedule.png')} />
                         <Image margin={'200px auto 0'} src={require('../../assets/images/works/nanalil/ui/setting.png')} />
                         <Image margin={'0 auto -40px'} src={require('../../assets/images/works/nanalil/ui/footer.png')} />
-                </>
+                </Container>
                 }
             />
         </>

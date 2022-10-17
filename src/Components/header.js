@@ -79,8 +79,6 @@ const Hamburger = styled.img`
 
 const onClick = (item) => {
     let randomNum = `${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)}`;
-    console.log(randomNum);
-
     
     item.target.style.background = `rgba(${randomNum},.5)`;
     
