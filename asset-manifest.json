@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/designPortfolio/static/js/main.9c3290b0.js",
+    "main.js": "/designPortfolio/static/js/main.6bd92e42.js",
     "static/media/record.mp4": "/designPortfolio/static/media/record.96d1c7993dbfd3d06d6f.mp4",
     "static/media/picture.mp4": "/designPortfolio/static/media/picture.93461131e6d94aeed519.mp4",
     "static/media/onboarding.mp4": "/designPortfolio/static/media/onboarding.1a17c9ecc9c1382f8cf8.mp4",
@@ -113,14 +113,15 @@
     "static/media/cleaner_process.png": "/designPortfolio/static/media/cleaner_process.8749911dffa7c618b406.png",
     "static/media/snspage_process.png": "/designPortfolio/static/media/snspage_process.e9a25e5af828ed5fa287.png",
     "static/media/iamwebapp_color.png": "/designPortfolio/static/media/iamwebapp_color.d2d53bc846973df74ca7.png",
+    "static/media/page404.png": "/designPortfolio/static/media/page404.03d7a120fdd263ff8aad.png",
     "static/media/iamwebapp_graph02.png": "/designPortfolio/static/media/iamwebapp_graph02.fe391bddab05c747a8f8.png",
     "static/media/iamwebapp_graph01.png": "/designPortfolio/static/media/iamwebapp_graph01.694ddbd076b03711bcbc.png",
     "static/media/iamwebapp_graph04.png": "/designPortfolio/static/media/iamwebapp_graph04.50bc724ccfef293721d2.png",
     "static/media/iamwebapp_graph03.png": "/designPortfolio/static/media/iamwebapp_graph03.0ce3fc72fe38104cc7b6.png",
     "index.html": "/designPortfolio/index.html",
-    "main.9c3290b0.js.map": "/designPortfolio/static/js/main.9c3290b0.js.map"
+    "main.6bd92e42.js.map": "/designPortfolio/static/js/main.6bd92e42.js.map"
   },
   "entrypoints": [
-    "static/js/main.9c3290b0.js"
+    "static/js/main.6bd92e42.js"
   ]
 }
